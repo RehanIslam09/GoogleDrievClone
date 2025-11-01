@@ -1,0 +1,184 @@
+[
+  {
+    "id": "h1",
+    "name": "New Year's Day",
+    "date": "2026-01-01",
+    "description": "Public holiday — First day of the Gregorian calendar year",
+    "category": "Public"
+  },
+  {
+    "id": "h2",
+    "name": "Makar Sankranti",
+    "date": "2026-01-14",
+    "description": "Observance — Harvest festival marking the transition of the sun into Capricorn",
+    "category": "Observance"
+  },
+  {
+    "id": "h3",
+    "name": "Republic Day",
+    "date": "2026-01-26",
+    "description": "Public holiday — Commemorates the adoption of the Constitution of India on January 26, 1950",
+    "category": "Public"
+  },
+  {
+    "id": "h4",
+    "name": "Maha Shivaratri",
+    "date": "2026-02-17",
+    "description": "Observance — Hindu festival dedicated to Lord Shiva",
+    "category": "Observance"
+  },
+  {
+    "id": "h5",
+    "name": "Holi",
+    "date": "2026-03-04",
+    "description": "Public holiday — Hindu festival of colors celebrating the arrival of spring",
+    "category": "Public"
+  },
+  {
+    "id": "h6",
+    "name": "Ugadi",
+    "date": "2026-03-22",
+    "description": "Regional holiday — New Year's Day for the states of Andhra Pradesh, Karnataka, and Telangana",
+    "category": "Regional"
+  },
+  {
+    "id": "h7",
+    "name": "Good Friday",
+    "date": "2026-04-03",
+    "description": "Public holiday — Christian observance commemorating the crucifixion of Jesus Christ",
+    "category": "Public"
+  },
+  {
+    "id": "h8",
+    "name": "Ram Navami",
+    "date": "2026-04-02",
+    "description": "Observance — Hindu festival celebrating the birth of Lord Rama",
+    "category": "Observance"
+  },
+  {
+    "id": "h9",
+    "name": "Mahavir Jayanti",
+    "date": "2026-04-06",
+    "description": "Observance — Jain festival celebrating the birth of Mahavira",
+    "category": "Observance"
+  },
+  {
+    "id": "h10",
+    "name": "Ambedkar Jayanti",
+    "date": "2026-04-14",
+    "description": "Public holiday — Commemorates the birthday of Dr. B.R. Ambedkar",
+    "category": "Public"
+  },
+  {
+    "id": "h11",
+    "name": "Eid ul-Fitr",
+    "date": "2026-04-21",
+    "description": "Public holiday — Islamic festival marking the end of Ramadan",
+    "category": "Public"
+  },
+  {
+    "id": "h12",
+    "name": "Buddha Purnima",
+    "date": "2026-05-15",
+    "description": "Public holiday — Celebrates the birth, enlightenment, and death of Gautama Buddha",
+    "category": "Public"
+  },
+  {
+    "id": "h13",
+    "name": "Eid ul-Adha",
+    "date": "2026-06-28",
+    "description": "Public holiday — Islamic festival of sacrifice commemorating Ibrahim's willingness to sacrifice his son",
+    "category": "Public"
+  },
+  {
+    "id": "h14",
+    "name": "Muharram",
+    "date": "2026-07-18",
+    "description": "Observance — Islamic New Year and day of mourning",
+    "category": "Observance"
+  },
+  {
+    "id": "h15",
+    "name": "Independence Day",
+    "date": "2026-08-15",
+    "description": "Public holiday — Commemorates India's independence from British rule on August 15, 1947",
+    "category": "Public"
+  },
+  {
+    "id": "h16",
+    "name": "Raksha Bandhan",
+    "date": "2026-08-09",
+    "description": "Observance — Hindu festival celebrating the bond between brothers and sisters",
+    "category": "Observance"
+  },
+  {
+    "id": "h17",
+    "name": "Janmashtami",
+    "date": "2026-08-25",
+    "description": "Public holiday — Celebrates the birth of Lord Krishna",
+    "category": "Public"
+  },
+  {
+    "id": "h18",
+    "name": "Ganesh Chaturthi",
+    "date": "2026-09-02",
+    "description": "Public holiday — Hindu festival honoring Lord Ganesha",
+    "category": "Public"
+  },
+  {
+    "id": "h19",
+    "name": "Onam",
+    "date": "2026-09-02",
+    "description": "Regional holiday — Harvest festival celebrated in Kerala",
+    "category": "Regional"
+  },
+  {
+    "id": "h20",
+    "name": "Gandhi Jayanti",
+    "date": "2026-10-02",
+    "description": "Public holiday — Commemorates the birthday of Mahatma Gandhi, Father of the Nation",
+    "category": "Public"
+  },
+  {
+    "id": "h21",
+    "name": "Dussehra",
+    "date": "2026-10-12",
+    "description": "Public holiday — Hindu festival celebrating the victory of good over evil",
+    "category": "Public"
+  },
+  {
+    "id": "h22",
+    "name": "Diwali",
+    "date": "2026-11-01",
+    "description": "Public holiday — Festival of lights celebrating the victory of light over darkness",
+    "category": "Public"
+  },
+  {
+    "id": "h23",
+    "name": "Govardhan Puja",
+    "date": "2026-11-02",
+    "description": "Observance — Hindu festival celebrated the day after Diwali",
+    "category": "Observance"
+  },
+  {
+    "id": "h24",
+    "name": "Bhai Dooj",
+    "date": "2026-11-03",
+    "description": "Observance — Festival celebrating the bond between brothers and sisters",
+    "category": "Observance"
+  },
+  {
+    "id": "h25",
+    "name": "Guru Nanak Jayanti",
+    "date": "2026-11-12",
+    "description": "Public holiday — Celebrates the birth of Guru Nanak, founder of Sikhism",
+    "category": "Public"
+  },
+  {
+    "id": "h26",
+    "name": "Christmas",
+    "date": "2026-12-25",
+    "description": "Public holiday — Christian festival celebrating the birth of Jesus Christ",
+    "category": "Public"
+  }
+]
