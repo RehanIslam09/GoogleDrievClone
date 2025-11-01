@@ -8,9 +8,11 @@ import {
   useTaskStore,
   useHolidayStore,
   useViewStore,
+  useToggleSideBarStore,
 } from "@/lib/store";
-import MonthView from "./month-view";
-import SideBar from "./sidebar/SideBar";
+import GoogleNavbar from "./google-navbar";
+import GoogleSidebar from "./google-sidebar";
+import GoogleCalendarGrid from "./google-calendar-grid";
 import WeekView from "./week-view";
 import DayView from "./day-view";
 import EventPopover from "./event-popover";
@@ -23,6 +25,7 @@ import {
   deleteTask,
   updateTaskCompletion,
 } from "@/app/actions/task-actions";
+import { cn } from "@/lib/utils";
 
 export default function MainView({
   eventsData,
@@ -34,6 +37,22 @@ export default function MainView({
   holidaysData: HolidayType[];
 }) {
   const { selectedView } = useViewStore();
+  const { isSideBarOpen, setSideBarOpen } = useToggleSideBarStore();
+
+  // Handle responsive sidebar on mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768 && isSideBarOpen) {
+        setSideBarOpen();
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isSideBarOpen, setSideBarOpen]);
 
   const {
     isPopoverOpen,
@@ -124,15 +143,40 @@ export default function MainView({
   };
 
   return (
-    <div className="flex">
-      {/* SideBar */}
-      <SideBar />
+    <div className="flex h-screen flex-col overflow-hidden bg-white">
+      {/* Top Navbar */}
+      <GoogleNavbar />
 
-      <div className="w-full flex-1">
-        {selectedView === "month" && <MonthView />}
-        {selectedView === "week" && <WeekView />}
-        {selectedView === "day" && <DayView />}
+      {/* Main Content Area */}
+      <div className="relative flex flex-1 overflow-hidden">
+        {/* Mobile Overlay */}
+        {isSideBarOpen && (
+          <div
+            className="absolute inset-0 z-20 bg-black/50 md:hidden"
+            onClick={setSideBarOpen}
+          />
+        )}
+
+        {/* Sidebar - Collapsible */}
+        <div
+          className={cn(
+            "absolute z-30 h-full transition-all duration-150 ease-in-out md:relative md:z-auto",
+            isSideBarOpen ? "w-64" : "w-0 -translate-x-full md:translate-x-0",
+            "overflow-hidden"
+          )}
+        >
+          <GoogleSidebar />
+        </div>
+
+        {/* Calendar View */}
+        <div className="flex flex-1 flex-col overflow-hidden">
+          {selectedView === "month" && <GoogleCalendarGrid />}
+          {selectedView === "week" && <WeekView />}
+          {selectedView === "day" && <DayView />}
+        </div>
       </div>
+
+      {/* Modals/Popups */}
       {isPopoverOpen && (
         <EventPopover
           isOpen={isPopoverOpen}

@@ -1,4 +1,3 @@
-import Header from "@/components/header/Header";
 import MainView from "@/components/MainView";
 import { db } from "@/db/drizzle";
 import { CalendarEventType, CalendarTaskType, HolidayType } from "@/lib/store";
@@ -48,13 +47,10 @@ export default async function Home() {
   const holidays = getHolidaysData();
 
   return (
-    <div className="">
-      <Header />
-      <MainView
-        eventsData={dbEvents as unknown as CalendarEventType[]}
-        tasksData={dbTasks as unknown as CalendarTaskType[]}
-        holidaysData={holidays as unknown as HolidayType[]}
-      />
-    </div>
+    <MainView
+      eventsData={dbEvents as unknown as CalendarEventType[]}
+      tasksData={dbTasks as unknown as CalendarTaskType[]}
+      holidaysData={holidays as unknown as HolidayType[]}
+    />
   );
 }

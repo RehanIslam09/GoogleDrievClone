@@ -9,9 +9,33 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			sans: ['Roboto', 'Inter', 'system-ui', 'sans-serif'],
+  			roboto: ['Roboto', 'sans-serif'],
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			// Google Calendar specific colors
+  			'google-gray': {
+  				50: '#f8f9fa',
+  				100: '#e8eaed',
+  				200: '#dadce0',
+  				300: '#bdc1c6',
+  				400: '#9aa0a6',
+  				500: '#80868b',
+  				600: '#5f6368',
+  				700: '#3c4043',
+  				800: '#202124',
+  			},
+  			'google-blue': {
+  				500: '#1a73e8',
+  				600: '#1967d2',
+  			},
+  			'google-green': {
+  				500: '#188038',
+  				600: '#137333',
+  			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

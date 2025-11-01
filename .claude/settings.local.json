@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npx drizzle-kit generate:*)",
       "Bash(npx drizzle-kit push:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

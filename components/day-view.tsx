@@ -1,19 +1,18 @@
+"use client";
+
 import { useDateStore, useEventStore, useTaskStore, useHolidayStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 import { ScrollArea } from "./ui/scroll-area";
-import { getHours, isCurrentDay } from "@/lib/getTime";
-import { EventRenderer } from "./event-renderer";
-import { TaskRenderer } from "./task-renderer";
-import { HolidayRenderer } from "./holiday-renderer";
-
+import { getHours } from "@/lib/getTime";
+import EventChip from "./event-chip";
 
 export default function DayView() {
   const [currentTime, setCurrentTime] = useState(dayjs());
-  const { openPopover, events } = useEventStore();
-  const { tasks } = useTaskStore();
-  const { holidays } = useHolidayStore();
+  const { openPopover, events, openEventSummary } = useEventStore();
+  const { tasks, openTaskSummary } = useTaskStore();
+  const { holidays, openHolidayCard } = useHolidayStore();
   const { userSelectedDate, setDate } = useDateStore();
 
   useEffect(() => {
@@ -23,83 +22,139 @@ export default function DayView() {
     return () => clearInterval(interval);
   }, []);
 
-  const isToday =
-    userSelectedDate.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
+  const isToday = userSelectedDate.format("YYYY-MM-DD") === dayjs().format("YYYY-MM-DD");
 
   return (
-    <>
-      <div className="grid grid-cols-[auto_auto_1fr] px-4">
-        <div className="w-16 border-r border-gray-300 text-xs">GMT +2</div>
-        <div className="flex w-16 flex-col items-center">
-          <div className={cn("text-xs", isToday && "text-blue-600")}>
-            {userSelectedDate.format("ddd")}{" "}
-          </div>{" "}
+    <div className="flex h-full flex-col bg-white">
+      {/* Day Header */}
+      <div className="grid grid-cols-[64px_1fr] border-b border-google-gray-200">
+        {/* Timezone cell */}
+        <div className="flex items-center justify-center border-r border-google-gray-200 py-4">
+          <span className="text-[10px] text-google-gray-500">GMT+5:30</span>
+        </div>
+
+        {/* Day header */}
+        <div className="flex items-center justify-center gap-2 py-2">
+          <div className={cn("text-[11px] font-medium uppercase", isToday ? "text-google-blue-500" : "text-google-gray-600")}>
+            {userSelectedDate.format("dddd")}
+          </div>
           <div
             className={cn(
-              "h-12 w-12 rounded-full p-2 text-2xl",
-              isToday && "bg-blue-600 text-white",
+              "flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal transition-colors",
+              isToday
+                ? "bg-google-blue-500 text-white"
+                : "text-google-gray-700"
             )}
           >
-            {userSelectedDate.format("DD")}{" "}
+            {userSelectedDate.format("D")}
           </div>
         </div>
-        <div></div>
       </div>
 
-      <ScrollArea className="h-[70vh]">
-        <div className="grid grid-cols-[auto_1fr] p-4">
+      {/* Time Grid */}
+      <ScrollArea className="flex-1">
+        <div className="grid grid-cols-[64px_1fr]">
           {/* Time Column */}
-          <div className="w-16 border-r border-gray-300">
+          <div className="border-r border-google-gray-200">
             {getHours.map((hour, index) => (
-              <div key={index} className="relative h-16">
-                <div className="absolute -top-2 text-xs text-gray-600">
-                  {hour.format("HH:mm")}
-                </div>
+              <div key={index} className="relative h-12 border-b border-google-gray-100">
+                {hour.hour() !== 0 && (
+                  <div className="absolute -top-2 right-2 text-[10px] text-google-gray-500">
+                    {hour.format("h A")}
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Day/Boxes Column */}
-          <div className="relative border-r border-gray-300">
-            {getHours.map((hour, i) => (
-              <div
-                key={i}
-                className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-gray-100"
-                onClick={() => {
-                  setDate(userSelectedDate.hour(hour.hour()));
-                  openPopover();
-                }}
-              >
-                <EventRenderer
-                  events={events}
-                  date={userSelectedDate.hour(hour.hour())}
-                  view="day"
-                />
-                <TaskRenderer
-                  tasks={tasks}
-                  date={userSelectedDate.hour(hour.hour())}
-                  view="day"
-                />
-                <HolidayRenderer
-                  holidays={holidays}
-                  date={userSelectedDate.hour(hour.hour())}
-                  view="day"
-                />
-              </div>
-            ))}
+          {/* Day Column */}
+          <div className="relative">
+            {getHours.map((hour, hourIndex) => {
+              const cellDate = userSelectedDate.hour(hour.hour()).minute(0);
+
+              // Filter events/tasks/holidays for this hour
+              const cellEvents = events.filter(
+                (event) => event.date.format("YYYY-MM-DD HH") === cellDate.format("YYYY-MM-DD HH")
+              );
+              const cellTasks = tasks.filter(
+                (task) => task.date.format("YYYY-MM-DD HH") === cellDate.format("YYYY-MM-DD HH")
+              );
+              const cellHolidays = holidays.filter(
+                (holiday) => holiday.date.format("YYYY-MM-DD") === cellDate.format("YYYY-MM-DD") && hourIndex === 0
+              );
+
+              return (
+                <div
+                  key={hourIndex}
+                  className="relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50"
+                  onClick={() => {
+                    setDate(cellDate);
+                    openPopover();
+                  }}
+                >
+                  {/* Events, Tasks, and Holidays */}
+                  <div className="space-y-0.5 p-1">
+                    {/* Holidays - show only in first hour */}
+                    {cellHolidays.map((holiday) => (
+                      <EventChip
+                        key={holiday.id}
+                        title={holiday.name}
+                        color="#188038"
+                        type="holiday"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openHolidayCard(holiday);
+                        }}
+                      />
+                    ))}
+
+                    {/* Events */}
+                    {cellEvents.map((event) => (
+                      <EventChip
+                        key={event.id}
+                        title={event.title}
+                        color="#1a73e8"
+                        type="event"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openEventSummary(event);
+                        }}
+                      />
+                    ))}
+
+                    {/* Tasks */}
+                    {cellTasks.map((task) => (
+                      <EventChip
+                        key={task.id}
+                        title={task.title}
+                        color="#d93025"
+                        type="task"
+                        completed={task.completed}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openTaskSummary(task);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
 
             {/* Current time indicator */}
-            {isCurrentDay(userSelectedDate) && (
+            {isToday && (
               <div
-                className={cn("absolute h-0.5 w-full bg-red-500")}
+                className="absolute z-10 h-0.5 w-full bg-red-500"
                 style={{
-                  top: `${(currentTime.hour() / 24) * 100}%`,
+                  top: `${((currentTime.hour() * 60 + currentTime.minute()) / (24 * 60)) * 100}%`,
                 }}
-              />
+              >
+                <div className="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500" />
+              </div>
             )}
           </div>
         </div>
       </ScrollArea>
-    </>
+    </div>
   );
 }
