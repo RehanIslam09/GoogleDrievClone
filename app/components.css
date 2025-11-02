@@ -489,30 +489,51 @@
   @apply h-5 w-5 text-[#1A73E8];
 }
 
-/* Navbar - Profile avatar button */
-.navbar-profile-avatar {
-  margin-left: 0.25rem !important;
+/* Navbar - Profile button (pill-shaped) */
+.navbar-profile-button {
+  margin-left: 0.5rem !important;
   display: flex !important;
-  height: 2rem !important;
-  width: 2rem !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.25rem 0.25rem 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid #dadce0 !important;
+  background-color: white !important;
+  transition: all 0.15s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+.navbar-profile-button:hover {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+/* Navbar - Profile text */
+.navbar-profile-text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  white-space: nowrap !important;
+}
+
+/* Navbar - Profile avatar circle */
+.navbar-profile-avatar {
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  width: 2rem !important;
+  height: 2rem !important;
   border-radius: 9999px !important;
-  background-color: #1a73e8 !important;
+  background-color: #f48fb1 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Navbar - Profile letter */
+.navbar-profile-letter {
   font-size: 0.875rem !important;
   font-weight: 500 !important;
   color: white !important;
-  transition: opacity 0.15s ease-in-out !important;
-}
-
-.navbar-profile-avatar:hover {
-  opacity: 0.9 !important;
-}
-
-/* Navbar - Profile avatar icon */
-.navbar-profile-icon {
-  width: 1rem !important;
-  height: 1rem !important;
+  line-height: 1 !important;
 }
 
 /* Navbar - Search bar container (when search is active) */
@@ -3225,4 +3246,341 @@
   text-align: center !important;
   line-height: 20px !important;
   font-family: Roboto, Arial, sans-serif !important;
+}
+
+/* Task Creation Modal */
+.task-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  padding: 16px !important;
+}
+
+.task-modal-container {
+  background-color: #ffffff !important;
+  border-radius: 28px !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  position: relative !important;
+  padding: 40px 48px 24px 48px !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+.task-modal-close-button {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background-color 0.2s !important;
+  color: #5f6368 !important;
+}
+
+.task-modal-close-button:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.task-modal-close-icon {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.task-modal-title-section {
+  margin-bottom: 24px !important;
+  border-bottom: 1px solid #dadce0 !important;
+  padding-bottom: 8px !important;
+}
+
+.task-modal-title-input {
+  width: 100% !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 22px !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+  color: #3c4043 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.task-modal-title-input::placeholder {
+  color: #80868b !important;
+}
+
+.task-modal-section {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 16px !important;
+  padding: 8px 0 !important;
+}
+
+.task-modal-icon-wrapper {
+  width: 24px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 4px !important;
+}
+
+.task-modal-icon {
+  width: 20px !important;
+  height: 20px !important;
+  color: #5f6368 !important;
+}
+
+.task-modal-datetime-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex: 1 !important;
+}
+
+.task-modal-date-button,
+.task-modal-time-button {
+  background-color: #f1f3f4 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  cursor: pointer !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  transition: background-color 0.2s !important;
+}
+
+.task-modal-date-button:hover,
+.task-modal-time-button:hover {
+  background-color: #e8eaed !important;
+}
+
+.task-modal-checkbox-section {
+  margin-left: 40px !important;
+}
+
+.task-modal-checkbox-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+}
+
+.task-modal-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+  cursor: pointer !important;
+  accent-color: #1a73e8 !important;
+}
+
+.task-modal-checkbox-text {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-family: Roboto, Arial, sans-serif !important;
+}
+
+.task-modal-dropdown-button {
+  background-color: #f1f3f4 !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  cursor: pointer !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  flex: 1 !important;
+  transition: background-color 0.2s !important;
+}
+
+.task-modal-dropdown-button:hover {
+  background-color: #e8eaed !important;
+}
+
+.task-modal-dropdown-icon {
+  width: 18px !important;
+  height: 18px !important;
+  color: #5f6368 !important;
+}
+
+.task-modal-description-textarea {
+  width: 100% !important;
+  border: none !important;
+  outline: none !important;
+  background-color: #f1f3f4 !important;
+  border-radius: 8px !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  resize: vertical !important;
+  min-height: 40px !important;
+}
+
+.task-modal-description-textarea::placeholder {
+  color: #5f6368 !important;
+}
+
+.task-modal-footer {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 32px !important;
+  padding-top: 16px !important;
+}
+
+.task-modal-save-button {
+  background-color: #c2e7ff !important;
+  color: #041e49 !important;
+  border: none !important;
+  border-radius: 24px !important;
+  padding: 10px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s, box-shadow 0.2s !important;
+}
+
+.task-modal-save-button:hover:not(:disabled) {
+  background-color: #a8d8f5 !important;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+.task-modal-save-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* Google Apps Dropdown */
+.navbar-apps-dropdown-wrapper {
+  position: relative !important;
+}
+
+.navbar-apps-dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+  padding: 16px !important;
+  z-index: 1000 !important;
+  min-width: 320px !important;
+  max-height: 600px !important;
+  overflow-y: auto !important;
+}
+
+.navbar-apps-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+}
+
+.navbar-app-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 8px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s !important;
+  cursor: pointer !important;
+}
+
+.navbar-app-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.navbar-app-item-active {
+  background-color: #e8f0fe !important;
+}
+
+.navbar-app-item-active:hover {
+  background-color: #d2e3fc !important;
+}
+
+.navbar-app-icon {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 8px !important;
+}
+
+.navbar-app-icon svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.navbar-app-label {
+  font-size: 13px !important;
+  color: #3c4043 !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  text-align: center !important;
+  line-height: 16px !important;
+}
+
+.navbar-apps-header {
+  font-size: 11px !important;
+  color: #5f6368 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+  padding: 8px 8px 12px 8px !important;
+  font-family: Roboto, Arial, sans-serif !important;
+  font-weight: 500 !important;
+}
+
+.navbar-apps-header:first-child {
+  padding-top: 0 !important;
+}
+
+.navbar-apps-divider {
+  height: 1px !important;
+  background-color: #e8eaed !important;
+  margin: 16px 0 !important;
+}
+
+.navbar-apps-marketplace {
+  margin-top: 16px !important;
+  padding-top: 16px !important;
+  border-top: 1px solid #e8eaed !important;
+  text-align: center !important;
+}
+
+.navbar-apps-marketplace-button {
+  display: inline-block !important;
+  padding: 10px 24px !important;
+  background-color: transparent !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 24px !important;
+  color: #1a73e8 !important;
+  font-size: 14px !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s, border-color 0.2s !important;
+  cursor: pointer !important;
+}
+
+.navbar-apps-marketplace-button:hover {
+  background-color: #f1f3f4 !important;
+  border-color: #c4c7c9 !important;
 }

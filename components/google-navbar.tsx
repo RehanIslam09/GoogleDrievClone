@@ -21,6 +21,7 @@ import {
 import { useDateStore, useViewStore, useToggleSideBarStore, useTasksViewStore } from "@/lib/store";
 import dayjs from "dayjs";
 import { cn } from "@/lib/utils";
+import GoogleAppsDropdown from "./google-apps-dropdown";
 
 export default function GoogleNavbar() {
   const { userSelectedDate, setDate, selectedMonthIndex, setMonth } = useDateStore();
@@ -32,11 +33,13 @@ export default function GoogleNavbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [isAppsOpen, setIsAppsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
+  const appsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -110,6 +113,23 @@ export default function GoogleNavbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isHelpOpen]);
+
+  // Close apps dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (appsRef.current && !appsRef.current.contains(event.target as Node)) {
+        setIsAppsOpen(false);
+      }
+    };
+
+    if (isAppsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isAppsOpen]);
 
   const handleToday = () => {
     setDate(dayjs());
@@ -466,22 +486,31 @@ export default function GoogleNavbar() {
           )}
             </div>
 
-            {/* Grid Icon */}
-            <button
-              className="navbar-icon-button"
-              aria-label="Apps"
-            >
-              <Grid3x3 className="navbar-icon" />
-            </button>
+            {/* Google Apps Dropdown */}
+            <div className="navbar-apps-dropdown-wrapper" ref={appsRef}>
+              <button
+                onClick={() => setIsAppsOpen(!isAppsOpen)}
+                className="navbar-icon-button"
+                aria-label="Apps"
+              >
+                <Grid3x3 className="navbar-icon" />
+              </button>
+
+              {/* Apps Dropdown Menu */}
+              {isAppsOpen && <GoogleAppsDropdown />}
+            </div>
           </>
         )}
 
-        {/* Profile Avatar */}
+        {/* Profile Button */}
         <button
-          className="navbar-profile-avatar"
+          className="navbar-profile-button"
           aria-label="Account"
         >
-          <User className="navbar-profile-icon" />
+          <span className="navbar-profile-text">Google</span>
+          <div className="navbar-profile-avatar">
+            <span className="navbar-profile-letter">R</span>
+          </div>
         </button>
       </div>
     </nav>

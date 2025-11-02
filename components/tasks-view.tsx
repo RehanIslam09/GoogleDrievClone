@@ -3,16 +3,22 @@
 import React, { useState } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import TaskCreationModal from "./task-creation-modal";
+import dayjs from "dayjs";
 
 export default function TasksView() {
   const [listsOpen, setListsOpen] = useState(true);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   return (
     <div className="tasks-view-container">
       {/* Left Sidebar */}
       <aside className="tasks-view-sidebar">
         {/* Create Button */}
-        <button className="tasks-view-create-button">
+        <button
+          className="tasks-view-create-button"
+          onClick={() => setIsTaskModalOpen(true)}
+        >
           <Plus className="tasks-view-create-icon" />
           Create
         </button>
@@ -76,7 +82,10 @@ export default function TasksView() {
 
         {/* Add task input box */}
         <div className="tasks-view-add-task-container">
-          <div className="tasks-view-add-task-box">
+          <div
+            className="tasks-view-add-task-box"
+            onClick={() => setIsTaskModalOpen(true)}
+          >
             <svg className="tasks-view-add-task-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5"/>
               <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
@@ -105,6 +114,13 @@ export default function TasksView() {
           <p className="tasks-view-empty-subtext">Add your to-dos and keep track of<br />them across Google Workspace</p>
         </div>
       </main>
+
+      {/* Task Creation Modal */}
+      <TaskCreationModal
+        isOpen={isTaskModalOpen}
+        onClose={() => setIsTaskModalOpen(false)}
+        date={dayjs().format("YYYY-MM-DD")}
+      />
     </div>
   );
 }
