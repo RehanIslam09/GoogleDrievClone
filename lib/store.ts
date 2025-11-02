@@ -44,8 +44,9 @@ type EventStore = {
   isPopoverOpen: boolean;
   isEventSummaryOpen: boolean;
   selectedEvent: CalendarEventType | null;
+  popoverMode: "event" | "task" | "outofoffice" | "focustime" | "workinglocation" | "appointment";
   setEvents: (events: CalendarEventType[]) => void;
-  openPopover: () => void;
+  openPopover: (mode?: "event" | "task" | "outofoffice" | "focustime" | "workinglocation" | "appointment") => void;
   closePopover: () => void;
   openEventSummary: (event: CalendarEventType) => void;
   closeEventSummary: () => void;
@@ -115,8 +116,9 @@ export const useEventStore = create<EventStore>((set) => ({
   isPopoverOpen: false,
   isEventSummaryOpen: false,
   selectedEvent: null,
+  popoverMode: "event",
   setEvents: (events) => set({ events }),
-  openPopover: () => set({ isPopoverOpen: true }),
+  openPopover: (mode = "event") => set({ isPopoverOpen: true, popoverMode: mode }),
   closePopover: () => set({ isPopoverOpen: false }),
   openEventSummary: (event) =>
     set({ isEventSummaryOpen: true, selectedEvent: event }),

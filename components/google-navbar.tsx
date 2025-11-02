@@ -30,10 +30,12 @@ export default function GoogleNavbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<HTMLDivElement>(null);
+  const helpRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -90,6 +92,23 @@ export default function GoogleNavbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isSettingsOpen]);
+
+  // Close help dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (helpRef.current && !helpRef.current.contains(event.target as Node)) {
+        setIsHelpOpen(false);
+      }
+    };
+
+    if (isHelpOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isHelpOpen]);
 
   const handleToday = () => {
     setDate(dayjs());
@@ -240,13 +259,40 @@ export default function GoogleNavbar() {
               <Search className="navbar-icon" />
             </button>
 
-            {/* Help Icon */}
-            <button
-              className="navbar-icon-button"
-              aria-label="Help"
-            >
-              <HelpCircle className="navbar-icon" />
-            </button>
+            {/* Help Icon with Dropdown */}
+            <div className="navbar-help-dropdown-wrapper" ref={helpRef}>
+              <button
+                onClick={() => setIsHelpOpen(!isHelpOpen)}
+                className="navbar-icon-button"
+                aria-label="Help"
+              >
+                <HelpCircle className="navbar-icon" />
+              </button>
+
+              {/* Help Dropdown Menu */}
+              {isHelpOpen && (
+                <div className="navbar-help-dropdown">
+                  <button
+                    onClick={() => setIsHelpOpen(false)}
+                    className="navbar-help-dropdown-item"
+                  >
+                    <span>Help</span>
+                  </button>
+                  <button
+                    onClick={() => setIsHelpOpen(false)}
+                    className="navbar-help-dropdown-item"
+                  >
+                    <span>Training</span>
+                  </button>
+                  <button
+                    onClick={() => setIsHelpOpen(false)}
+                    className="navbar-help-dropdown-item"
+                  >
+                    <span>Send feedback to Google</span>
+                  </button>
+                </div>
+              )}
+            </div>
 
             {/* Settings Icon with Dropdown */}
             <div className="navbar-settings-dropdown-wrapper" ref={settingsRef}>

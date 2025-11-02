@@ -61,6 +61,7 @@ export default function MainView({
     closeEventSummary,
     selectedEvent,
     setEvents,
+    popoverMode,
   } = useEventStore();
 
   const {
@@ -181,6 +182,7 @@ export default function MainView({
           isOpen={isPopoverOpen}
           onClose={closePopover}
           date={userSelectedDate.format("YYYY-MM-DD")}
+          initialMode={popoverMode}
         />
       )}
 

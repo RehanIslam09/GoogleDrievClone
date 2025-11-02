@@ -25,7 +25,32 @@ export default function GoogleSidebar() {
 
   const handleEventClick = () => {
     setDate(dayjs());
-    openPopover();
+    openPopover("event");
+  };
+
+  const handleTaskClick = () => {
+    setDate(dayjs());
+    openPopover("task");
+  };
+
+  const handleOutOfOfficeClick = () => {
+    setDate(dayjs());
+    openPopover("outofoffice");
+  };
+
+  const handleFocusTimeClick = () => {
+    setDate(dayjs());
+    openPopover("focustime");
+  };
+
+  const handleWorkingLocationClick = () => {
+    setDate(dayjs());
+    openPopover("workinglocation");
+  };
+
+  const handleAppointmentClick = () => {
+    setDate(dayjs());
+    openPopover("appointment");
   };
 
   const handlePrevMonth = () => {
@@ -40,7 +65,14 @@ export default function GoogleSidebar() {
     <aside className="google-sidebar">
       {/* Create Button */}
       <div className="sidebar-create-container">
-        <CreateButton onEventClick={handleEventClick} />
+        <CreateButton
+          onEventClick={handleEventClick}
+          onTaskClick={handleTaskClick}
+          onOutOfOfficeClick={handleOutOfOfficeClick}
+          onFocusTimeClick={handleFocusTimeClick}
+          onWorkingLocationClick={handleWorkingLocationClick}
+          onAppointmentClick={handleAppointmentClick}
+        />
       </div>
 
       {/* Mini Calendar */}

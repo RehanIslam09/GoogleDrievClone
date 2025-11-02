@@ -7,12 +7,18 @@ import { motion, AnimatePresence } from "framer-motion";
 interface CreateButtonProps {
   onEventClick?: () => void;
   onTaskClick?: () => void;
+  onOutOfOfficeClick?: () => void;
+  onFocusTimeClick?: () => void;
+  onWorkingLocationClick?: () => void;
   onAppointmentClick?: () => void;
 }
 
 export default function CreateButton({
   onEventClick,
   onTaskClick,
+  onOutOfOfficeClick,
+  onFocusTimeClick,
+  onWorkingLocationClick,
   onAppointmentClick,
 }: CreateButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +52,21 @@ export default function CreateButton({
   const handleTaskClick = () => {
     setIsOpen(false);
     onTaskClick?.(); // opens Task modal
+  };
+
+  const handleOutOfOfficeClick = () => {
+    setIsOpen(false);
+    onOutOfOfficeClick?.();
+  };
+
+  const handleFocusTimeClick = () => {
+    setIsOpen(false);
+    onFocusTimeClick?.();
+  };
+
+  const handleWorkingLocationClick = () => {
+    setIsOpen(false);
+    onWorkingLocationClick?.();
   };
 
   const handleAppointmentClick = () => {
@@ -101,19 +122,19 @@ export default function CreateButton({
               Task
             </button>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleOutOfOfficeClick}
               className="create-button-dropdown-item"
             >
               Out of office
             </button>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleFocusTimeClick}
               className="create-button-dropdown-item"
             >
               Focus time
             </button>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={handleWorkingLocationClick}
               className="create-button-dropdown-item"
             >
               Working location

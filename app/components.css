@@ -236,12 +236,23 @@
 
 /* Navbar - Main navigation container */
 .google-navbar {
-  @apply flex h-[64px] items-center justify-between border-b border-[#e8eaed] bg-white px-4;
+  position: relative !important;
+  display: flex !important;
+  height: 64px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border-bottom: 1px solid #e8eaed !important;
+  background-color: white !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 /* Navbar - Left section container */
 .navbar-left-section {
-  @apply flex items-center gap-4;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  align-items: center !important;
+  gap: 1rem !important;
 }
 
 /* Navbar - Hamburger menu button */
@@ -276,7 +287,13 @@
 
 /* Navbar - Center section container */
 .navbar-center-section {
-  @apply flex items-center gap-3;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
 }
 
 /* Navbar - Today button */
@@ -286,7 +303,9 @@
 
 /* Navbar - Navigation arrows container */
 .navbar-nav-arrows {
-  @apply flex items-center;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
 }
 
 /* Navbar - Navigation arrow button (prev/next) */
@@ -306,47 +325,111 @@
 
 /* Navbar - Right section container */
 .navbar-right-section {
-  @apply flex items-center gap-2;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
 }
 
 /* Navbar - Icon button (Search, Help, Settings, etc.) */
 .navbar-icon-button {
-  @apply rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4];
+  border-radius: 9999px !important;
+  padding: 0.75rem !important;
+  color: #5f6368 !important;
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+.navbar-icon-button:hover {
+  background-color: #f1f3f4 !important;
 }
 
 /* Navbar - Icon size */
 .navbar-icon {
-  @apply h-5 w-5;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
 }
 
 /* Navbar - View selector dropdown wrapper (pill-shaped button group) */
 .navbar-view-selector-wrapper {
-  @apply relative flex items-center rounded-full border border-[#DADCE0] bg-white;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 9999px !important;
+  border: 1px solid #dadce0 !important;
+  background-color: white !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Navbar - Calendar icon button (left side of pill) */
 .navbar-view-calendar-button {
-  @apply flex h-10 w-10 items-center justify-center rounded-l-full bg-[#C2E7FF] text-[#1A73E8] hover:bg-[#A8D8F0];
+  display: flex !important;
+  height: 2.25rem !important;
+  width: 2.25rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-top-left-radius: 9999px !important;
+  border-bottom-left-radius: 9999px !important;
+  background-color: #c2e7ff !important;
+  color: #1a73e8 !important;
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+.navbar-view-calendar-button:hover {
+  background-color: #a8d8f0 !important;
 }
 
 /* Navbar - Calendar icon */
 .navbar-view-calendar-icon {
-  @apply h-5 w-5;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 /* Navbar - Checkmark button (middle of pill) */
 .navbar-view-check-button {
-  @apply flex h-10 w-10 items-center justify-center border-l border-r border-[#DADCE0] text-[#5F6368] hover:bg-[#F1F3F4];
+  display: flex !important;
+  height: 2.25rem !important;
+  width: 2.25rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-left: 1px solid #dadce0 !important;
+  border-right: 1px solid #dadce0 !important;
+  color: #5f6368 !important;
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+.navbar-view-check-button:hover {
+  background-color: #f1f3f4 !important;
 }
 
 /* Navbar - Checkmark icon */
 .navbar-view-check-icon {
-  @apply h-5 w-5;
+  width: 18px !important;
+  height: 18px !important;
 }
 
 /* Navbar - View selector dropdown (select element - right side of pill) */
 .navbar-view-selector {
-  @apply h-10 cursor-pointer appearance-none rounded-r-full border-none bg-transparent px-4 pr-8 text-sm font-medium text-[#3C4043] hover:bg-[#F1F3F4] focus:outline-none;
+  height: 2.25rem !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  border-top-right-radius: 9999px !important;
+  border-bottom-right-radius: 9999px !important;
+  border: none !important;
+  background-color: transparent !important;
+  padding-left: 0.75rem !important;
+  padding-right: 2rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  transition: background-color 0.15s ease-in-out !important;
+}
+
+.navbar-view-selector:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.navbar-view-selector:focus {
+  outline: none !important;
 }
 
 /* Navbar - View selector when month is selected */
@@ -361,7 +444,14 @@
 
 /* Navbar - Dropdown chevron icon */
 .navbar-view-selector-chevron {
-  @apply pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 rotate-90 text-[#5F6368];
+  pointer-events: none !important;
+  position: absolute !important;
+  right: 0.5rem !important;
+  top: 50% !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  transform: translateY(-50%) rotate(90deg) !important;
+  color: #5f6368 !important;
 }
 
 /* Navbar - View dropdown menu (custom dropdown styling) */
@@ -396,12 +486,28 @@
 
 /* Navbar - Profile avatar button */
 .navbar-profile-avatar {
-  @apply ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1A73E8] text-sm font-medium text-white hover:opacity-90;
+  margin-left: 0.25rem !important;
+  display: flex !important;
+  height: 2rem !important;
+  width: 2rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 9999px !important;
+  background-color: #1a73e8 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: white !important;
+  transition: opacity 0.15s ease-in-out !important;
+}
+
+.navbar-profile-avatar:hover {
+  opacity: 0.9 !important;
 }
 
 /* Navbar - Profile avatar icon */
 .navbar-profile-icon {
-  @apply h-4 w-4;
+  width: 1rem !important;
+  height: 1rem !important;
 }
 
 /* Navbar - Search bar container (when search is active) */
@@ -457,6 +563,21 @@
 /* Navbar - Settings dropdown separator */
 .navbar-settings-dropdown-separator {
   @apply my-2 border-t border-[#dadce0];
+}
+
+/* Navbar - Help dropdown wrapper */
+.navbar-help-dropdown-wrapper {
+  @apply relative;
+}
+
+/* Navbar - Help dropdown menu */
+.navbar-help-dropdown {
+  @apply absolute right-0 top-full z-50 mt-2 w-64 rounded-lg border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
+}
+
+/* Navbar - Help dropdown item */
+.navbar-help-dropdown-item {
+  @apply flex w-full items-center gap-3 px-6 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4];
 }
 
 /* ==========================================================================
@@ -767,122 +888,820 @@
 
 /* Event popover - Overlay background */
 .event-popover-overlay {
-  @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
 }
 
 /* Event popover - Main popover container */
 .event-popover-container {
-  @apply w-full max-w-lg rounded-lg bg-white shadow-2xl;
+  width: 100% !important;
+  max-width: 520px !important;
+  background-color: #f8f9fa !important;
+  border-radius: 28px !important;
+  box-shadow:
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+    0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 /* Event popover - Header */
 .event-popover-header {
-  @apply flex items-center justify-between border-b border-google-gray-200 px-6 py-4;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 16px 12px 20px !important;
+  background-color: #f8f9fa !important;
+  border-top-left-radius: 28px !important;
+  border-top-right-radius: 28px !important;
 }
 
-/* Event popover - Header icon container (create event) */
-.event-popover-header-icon-wrapper {
-  @apply flex items-center gap-2;
+/* Event popover - Menu button */
+.event-popover-menu-button {
+  padding: 8px !important;
+  border-radius: 50% !important;
+  color: #5f6368 !important;
+  transition: background-color 0.2s !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
 }
 
-/* Event popover - Header icon */
-.event-popover-header-icon {
-  @apply h-5 w-5 text-google-gray-600;
+.event-popover-menu-button:hover {
+  background-color: #f1f3f4 !important;
 }
 
-/* Event popover - Header text */
-.event-popover-header-text {
-  @apply text-sm font-medium text-google-gray-700;
+/* Event popover - Menu icon */
+.event-popover-menu-icon {
+  width: 20px !important;
+  height: 20px !important;
 }
 
 /* Event popover - Close button */
 .event-popover-close-button {
-  @apply hover:bg-google-gray-100;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  color: #5f6368 !important;
+  transition: background-color 0.2s !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.event-popover-close-button:hover {
+  background-color: #f1f3f4 !important;
 }
 
 /* Event popover - Close icon */
 .event-popover-close-icon {
-  @apply h-5 w-5 text-google-gray-600;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 /* Event popover - Form */
 .event-popover-form {
-  @apply space-y-4 p-6;
+  padding: 0 !important;
+}
+
+/* Event popover - Title section */
+.event-popover-title-section {
+  padding: 8px 24px 0 24px !important;
+  background-color: white !important;
+  border-top-left-radius: 24px !important;
+  border-top-right-radius: 24px !important;
+  margin: 0 !important;
 }
 
 /* Event popover - Title input */
 .event-popover-title-input {
-  @apply rounded-none border-0 border-b border-google-gray-300 px-0 text-2xl font-normal text-google-gray-800 placeholder:text-google-gray-400 focus-visible:border-b-2 focus-visible:border-google-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0;
+  border: none !important;
+  border-bottom: 2px solid #1a73e8 !important;
+  border-radius: 0 !important;
+  padding: 12px 0 8px 0 !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: #3c4043 !important;
+  background: transparent !important;
+  outline: none !important;
 }
 
-/* Event popover - Mode toggle container (Event/Task buttons) */
-.event-popover-mode-toggle {
-  @apply flex items-center gap-2 border-b border-google-gray-200 pb-4;
+.event-popover-title-input::placeholder {
+  color: #80868b !important;
 }
 
-/* Event popover - Mode button (Event) */
-.event-popover-mode-button {
-  @apply rounded-full px-4 py-1.5 text-sm font-medium transition-colors;
+.event-popover-title-input:focus {
+  border-bottom: 2px solid #1a73e8 !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
-/* Event popover - Mode button active state */
-.event-popover-mode-button-active {
-  @apply bg-blue-50 text-google-blue-600 hover:bg-blue-50;
+/* Event popover - Tabs container */
+.event-popover-tabs {
+  display: flex !important;
+  gap: 4px !important;
+  padding: 16px 24px 16px 24px !important;
+  background-color: white !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
 }
 
-/* Event popover - Mode button inactive state */
-.event-popover-mode-button-inactive {
-  @apply bg-transparent text-google-gray-700 hover:bg-google-gray-100;
+.event-popover-tabs::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Event popover - Individual tab button */
+.event-popover-tab {
+  padding: 6px 14px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #5f6368 !important;
+  background-color: #e8eaed !important;
+  border: none !important;
+  border-radius: 16px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: background-color 0.2s !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.event-popover-tab:hover {
+  background-color: #dadce0 !important;
+}
+
+/* Event popover - Active tab */
+.event-popover-tab-active {
+  background-color: #d3e3fd !important;
+  color: #1967d2 !important;
+}
+
+.event-popover-tab-active:hover {
+  background-color: #c2dbf7 !important;
+}
+
+/* Event popover - Tab badge (NEW) */
+.event-popover-tab-badge {
+  padding: 2px 6px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: white !important;
+  background-color: #1a73e8 !important;
+  border-radius: 8px !important;
+  margin-left: 4px !important;
+}
+
+/* Event popover - Field row */
+.event-popover-field-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  padding: 14px 24px !important;
+  background-color: white !important;
+  border-bottom: 1px solid #e8eaed !important;
 }
 
 /* Event popover - Field icon */
 .event-popover-field-icon {
-  @apply h-5 w-5 text-google-gray-600;
+  width: 20px !important;
+  height: 20px !important;
+  color: #5f6368 !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+/* Event popover - Datetime container */
+.event-popover-datetime-container {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Event popover - Datetime row */
+.event-popover-datetime-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
 }
 
 /* Event popover - Date text */
 .event-popover-date-text {
-  @apply text-sm text-google-gray-700;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+}
+
+/* Event popover - Time separator */
+.event-popover-time-separator {
+  color: #5f6368 !important;
+  margin: 0 4px !important;
+}
+
+/* Event popover - Time text (for tasks) */
+.event-popover-time-text {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  margin-left: 8px !important;
+}
+
+/* Event popover - Timezone row */
+.event-popover-timezone-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  color: #5f6368 !important;
+}
+
+/* Event popover - Timezone text */
+.event-popover-timezone-text {
+  font-size: 12px !important;
+  color: #5f6368 !important;
+}
+
+/* Event popover - Meta dot separator */
+.event-popover-meta-dot {
+  width: 3px !important;
+  height: 3px !important;
+  background-color: #5f6368 !important;
+  border-radius: 50% !important;
+  margin: 0 4px !important;
 }
 
 /* Event popover - Regular input field */
 .event-popover-input {
-  @apply rounded-md border-0 bg-google-gray-50 text-sm text-google-gray-800 placeholder:text-google-gray-400 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-google-blue-500;
+  flex: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  outline: none !important;
+  padding: 0 !important;
 }
 
-/* Event popover - Calendar info text */
-.event-popover-calendar-label {
-  @apply text-sm font-medium text-google-gray-700;
+.event-popover-input::placeholder {
+  color: #5f6368 !important;
+}
+
+.event-popover-input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Event popover - Link text (Google Meet) */
+.event-popover-link-text {
+  font-size: 14px !important;
+  color: #1a73e8 !important;
+  cursor: pointer !important;
+  flex: 1 !important;
+}
+
+.event-popover-link-text:hover {
+  text-decoration: underline !important;
+}
+
+/* Event popover - Calendar info container */
+.event-popover-calendar-info {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Event popover - Calendar user row */
+.event-popover-calendar-user {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Calendar user name */
+.event-popover-calendar-user-name {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-weight: 500 !important;
 }
 
 /* Event popover - Calendar color dot */
-.event-popover-calendar-dot {
-  @apply h-4 w-4 rounded-full bg-google-blue-500;
+.event-popover-calendar-color {
+  width: 12px !important;
+  height: 12px !important;
+  background-color: #039be5 !important;
+  border-radius: 50% !important;
 }
 
-/* Event popover - Metadata text (Busy, visibility, etc.) */
-.event-popover-metadata {
-  @apply flex items-center gap-1 text-xs text-google-gray-500;
+/* Event popover - Calendar metadata row */
+.event-popover-calendar-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 12px !important;
+  color: #5f6368 !important;
 }
 
-/* Event popover - Metadata separator dot */
-.event-popover-metadata-dot {
-  @apply h-1 w-1 rounded-full bg-google-gray-400;
+/* Event popover - Task description container */
+.event-popover-task-description {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  padding: 14px 24px !important;
+  background-color: #e8eaed !important;
+  border-bottom: 1px solid #e8eaed !important;
 }
 
-/* Event popover - Submit button */
-.event-popover-submit-button {
-  @apply bg-google-blue-500 text-white hover:bg-google-blue-600;
+/* Event popover - Task textarea */
+.event-popover-task-textarea {
+  flex: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  outline: none !important;
+  padding: 0 !important;
+  resize: none !important;
+  font-family: inherit !important;
+}
+
+.event-popover-task-textarea::placeholder {
+  color: #5f6368 !important;
+}
+
+.event-popover-task-textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Event popover - Task select dropdown */
+.event-popover-task-select {
+  flex: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  outline: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235f6368' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
+  background-size: 12px !important;
+  padding-right: 20px !important;
+}
+
+.event-popover-task-select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Event popover - Footer */
+.event-popover-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 24px 20px 24px !important;
+  background-color: white !important;
+  border-bottom-left-radius: 28px !important;
+  border-bottom-right-radius: 28px !important;
+}
+
+/* Event popover - More options button */
+.event-popover-more-options {
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1a73e8 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+}
+
+.event-popover-more-options:hover {
+  background-color: #f1f3f4 !important;
+}
+
+/* Event popover - Save button */
+.event-popover-save-button {
+  padding: 10px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: white !important;
+  background-color: #1a73e8 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  box-shadow:
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+.event-popover-save-button:hover {
+  background-color: #1765cc !important;
+  box-shadow:
+    0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15) !important;
+}
+
+.event-popover-save-button:disabled {
+  background-color: #dadce0 !important;
+  color: #5f6368 !important;
+  cursor: not-allowed !important;
 }
 
 /* Event popover - Error message */
 .event-popover-error {
-  @apply text-sm text-red-600;
+  padding: 8px 24px !important;
+  font-size: 12px !important;
+  color: #d93025 !important;
 }
 
 /* Event popover - Success message */
 .event-popover-success {
-  @apply text-sm text-google-green-600;
+  padding: 8px 24px !important;
+  font-size: 12px !important;
+  color: #188038 !important;
+}
+
+/* Event popover - Out of Office Section */
+.event-popover-ooo-section {
+  padding: 16px 24px !important;
+  background-color: white !important;
+  border-bottom: 1px solid #e8eaed !important;
+}
+
+/* Event popover - Out of Office Checkbox Row */
+.event-popover-ooo-checkbox-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  margin-bottom: 12px !important;
+}
+
+/* Event popover - Out of Office Checkbox */
+.event-popover-ooo-checkbox {
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid #5f6368 !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  position: relative !important;
+  background-color: white !important;
+  margin: 0 !important;
+}
+
+.event-popover-ooo-checkbox:checked {
+  background-color: #1a73e8 !important;
+  border-color: #1a73e8 !important;
+}
+
+.event-popover-ooo-checkbox:checked::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 5px !important;
+  top: 2px !important;
+  width: 4px !important;
+  height: 8px !important;
+  border: solid white !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg) !important;
+}
+
+/* Event popover - Out of Office Label */
+.event-popover-ooo-label {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  user-select: none !important;
+}
+
+/* Event popover - Out of Office Options Container */
+.event-popover-ooo-options {
+  margin-left: 30px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Out of Office Radio Row */
+.event-popover-ooo-radio-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+}
+
+/* Event popover - Out of Office Radio */
+.event-popover-ooo-radio {
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid #5f6368 !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  position: relative !important;
+  background-color: white !important;
+  margin: 0 !important;
+}
+
+.event-popover-ooo-radio:checked {
+  border-color: #1a73e8 !important;
+}
+
+.event-popover-ooo-radio:checked::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 3px !important;
+  top: 3px !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #1a73e8 !important;
+  border-radius: 50% !important;
+}
+
+/* Event popover - Out of Office Radio Label */
+.event-popover-ooo-radio-label {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  user-select: none !important;
+}
+
+/* Event popover - Out of Office Message Container */
+.event-popover-ooo-message {
+  padding: 16px 24px !important;
+  background-color: white !important;
+  border-bottom: 1px solid #e8eaed !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Out of Office Message Label */
+.event-popover-ooo-message-label {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #5f6368 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Event popover - Out of Office Textarea */
+.event-popover-ooo-textarea {
+  width: 100% !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 4px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-family: inherit !important;
+  resize: vertical !important;
+  outline: none !important;
+  background-color: white !important;
+}
+
+.event-popover-ooo-textarea:focus {
+  border-color: #1a73e8 !important;
+  box-shadow: 0 0 0 1px #1a73e8 !important;
+}
+
+.event-popover-ooo-textarea::placeholder {
+  color: #5f6368 !important;
+}
+
+/* Event popover - Out of Office Notice Container */
+.event-popover-ooo-notice {
+  padding: 12px 24px !important;
+  background-color: #f1f3f4 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  border-bottom: 1px solid #e8eaed !important;
+}
+
+/* Event popover - Out of Office Notice Text */
+.event-popover-ooo-notice-text {
+  font-size: 13px !important;
+  color: #5f6368 !important;
+  flex: 1 !important;
+}
+
+/* Event popover - Out of Office Help Button */
+.event-popover-ooo-help-button {
+  padding: 4px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: #5f6368 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s !important;
+}
+
+.event-popover-ooo-help-button:hover {
+  background-color: #e8eaed !important;
+}
+
+/* Event popover - Focus Time Do Not Disturb Container */
+.event-popover-focustime-dnd {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+/* Event popover - Focus Time Do Not Disturb Header */
+.event-popover-focustime-dnd-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Focus Time Do Not Disturb Title */
+.event-popover-focustime-dnd-title {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+}
+
+/* Event popover - Focus Time Do Not Disturb Subtitle */
+.event-popover-focustime-dnd-subtitle {
+  font-size: 12px !important;
+  color: #5f6368 !important;
+}
+
+/* Event popover - Working Location DateTime Container */
+.event-popover-workinglocation-datetime {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Event popover - Working Location Add Time Button */
+.event-popover-workinglocation-add-time {
+  padding: 4px 12px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #1a73e8 !important;
+  background: transparent !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 16px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  margin-left: auto !important;
+}
+
+.event-popover-workinglocation-add-time:hover {
+  background-color: #f1f3f4 !important;
+  border-color: #5f6368 !important;
+}
+
+/* Event popover - Working Location Settings Link */
+.event-popover-workinglocation-settings-link {
+  font-size: 12px !important;
+  color: #1a73e8 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.event-popover-workinglocation-settings-link:hover {
+  text-decoration: underline !important;
+}
+
+/* Event popover - Working Location Choices Container */
+.event-popover-workinglocation-choices {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* Event popover - Working Location Label */
+.event-popover-workinglocation-label {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-weight: 400 !important;
+}
+
+/* Event popover - Working Location Buttons Container */
+.event-popover-workinglocation-buttons {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Working Location Button */
+.event-popover-workinglocation-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1a73e8 !important;
+  background-color: white !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.event-popover-workinglocation-button:hover {
+  background-color: #f8f9fa !important;
+  border-color: #5f6368 !important;
+}
+
+/* Event popover - Working Location Icon */
+.event-popover-workinglocation-icon {
+  color: #1a73e8 !important;
+}
+
+/* Event popover - Working Location Other Button */
+.event-popover-workinglocation-other {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: fit-content !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1a73e8 !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+}
+
+.event-popover-workinglocation-other:hover {
+  background-color: #f1f3f4 !important;
+}
+
+/* Event popover - Appointment Info Section */
+.event-popover-appointment-info {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  padding: 14px 24px !important;
+  background-color: white !important;
+  border-bottom: 1px solid #e8eaed !important;
+}
+
+/* Event popover - Appointment Info Icon */
+.event-popover-appointment-info-icon {
+  color: #5f6368 !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+/* Event popover - Appointment Info Content */
+.event-popover-appointment-info-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Event popover - Appointment Info Text */
+.event-popover-appointment-info-text {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* Event popover - Appointment Info Links */
+.event-popover-appointment-info-links {
+  display: flex !important;
+  gap: 16px !important;
+}
+
+/* Event popover - Appointment Link */
+.event-popover-appointment-link {
+  font-size: 14px !important;
+  color: #1a73e8 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.event-popover-appointment-link:hover {
+  text-decoration: underline !important;
 }
 
 /* ==========================================================================
