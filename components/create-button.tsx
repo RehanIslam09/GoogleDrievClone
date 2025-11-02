@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Plus, Calendar, CheckSquare, Clock } from "lucide-react";
+import { Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface CreateButtonProps {
@@ -19,98 +19,92 @@ export default function CreateButton({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Close dropdown when clicking outside
+  // close dropdown on outside click
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (
         dropdownRef.current &&
         buttonRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        !buttonRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(e.target as Node) &&
+        !buttonRef.current.contains(e.target as Node)
       ) {
         setIsOpen(false);
       }
     };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDropdown = () => setIsOpen((prev) => !prev);
 
+  // --- option handlers ---
   const handleEventClick = () => {
-    console.log("Event clicked");
-    onEventClick?.();
     setIsOpen(false);
+    onEventClick?.(); // opens Event modal
   };
 
   const handleTaskClick = () => {
-    console.log("Task clicked");
-    onTaskClick?.();
     setIsOpen(false);
+    onTaskClick?.(); // opens Task modal
   };
 
   const handleAppointmentClick = () => {
-    console.log("Appointment schedule clicked");
-    onAppointmentClick?.();
     setIsOpen(false);
+    onAppointmentClick?.(); // opens Appointment modal
   };
 
   return (
-    <div className="relative">
+    <div className="create-button-wrapper">
       {/* Create Button */}
       <button
         ref={buttonRef}
-        onClick={handleToggle}
-        className="flex items-center gap-3 rounded-[28px] border border-gray-200 bg-white px-6 py-3 text-[14px] font-medium text-[#3c4043] shadow-sm transition-all hover:bg-gray-50 hover:shadow-md focus:outline-none"
+        onClick={toggleDropdown}
+        className="create-button"
       >
-        <Plus className="h-5 w-5 font-semibold" strokeWidth={2.5} />
+        <Plus
+          className="create-button-icon"
+          strokeWidth={2.5}
+        />
         <span>Create</span>
+        <svg
+          className={`create-button-chevron ${isOpen ? "create-button-chevron-open" : "create-button-chevron-closed"}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
 
-      {/* Dropdown Menu */}
+      {/* Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             ref={dropdownRef}
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-0 top-full z-50 mt-2 w-56 rounded-xl border border-gray-200 bg-white shadow-lg"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="create-button-dropdown"
           >
-            {/* Event Option */}
             <button
               onClick={handleEventClick}
-              className="flex w-full items-center gap-3 px-4 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-gray-100 first:rounded-t-xl last:rounded-b-xl"
+              className="create-button-dropdown-item"
             >
-              <Calendar className="h-5 w-5 text-[#5f6368]" />
-              <span>Event</span>
+              Event
             </button>
-
-            {/* Task Option */}
             <button
               onClick={handleTaskClick}
-              className="flex w-full items-center gap-3 px-4 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-gray-100 first:rounded-t-xl last:rounded-b-xl"
+              className="create-button-dropdown-item"
             >
-              <CheckSquare className="h-5 w-5 text-[#5f6368]" />
-              <span>Task</span>
+              Task
             </button>
-
-            {/* Appointment Schedule Option */}
             <button
               onClick={handleAppointmentClick}
-              className="flex w-full items-center gap-3 px-4 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-gray-100 first:rounded-t-xl last:rounded-b-xl"
+              className="create-button-dropdown-item"
             >
-              <Clock className="h-5 w-5 text-[#5f6368]" />
-              <span>Appointment schedule</span>
+              Appointment schedule
             </button>
           </motion.div>
         )}

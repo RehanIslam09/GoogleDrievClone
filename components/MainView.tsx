@@ -143,16 +143,16 @@ export default function MainView({
   };
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white">
+    <div className="main-view-container">
       {/* Top Navbar */}
       <GoogleNavbar />
 
       {/* Main Content Area */}
-      <div className="relative flex flex-1 overflow-hidden">
+      <div className="main-view-content">
         {/* Mobile Overlay */}
         {isSideBarOpen && (
           <div
-            className="absolute inset-0 z-20 bg-black/50 md:hidden"
+            className="main-view-mobile-overlay"
             onClick={setSideBarOpen}
           />
         )}
@@ -160,16 +160,15 @@ export default function MainView({
         {/* Sidebar - Collapsible */}
         <div
           className={cn(
-            "absolute z-30 h-full transition-all duration-150 ease-in-out md:relative md:z-auto",
-            isSideBarOpen ? "w-64" : "w-0 -translate-x-full md:translate-x-0",
-            "overflow-hidden"
+            "main-view-sidebar-wrapper",
+            isSideBarOpen ? "main-view-sidebar-open" : "main-view-sidebar-closed"
           )}
         >
           <GoogleSidebar />
         </div>
 
         {/* Calendar View */}
-        <div className="flex flex-1 flex-col overflow-hidden">
+        <div className="main-view-calendar">
           {selectedView === "month" && <GoogleCalendarGrid />}
           {selectedView === "week" && <WeekView />}
           {selectedView === "day" && <DayView />}

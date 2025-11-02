@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Menu,
   Search,
@@ -11,6 +11,7 @@ import {
   User,
   Grid3x3,
   Check,
+  Calendar,
 } from "lucide-react";
 import { useDateStore, useViewStore, useToggleSideBarStore } from "@/lib/store";
 import dayjs from "dayjs";
@@ -20,6 +21,25 @@ export default function GoogleNavbar() {
   const { userSelectedDate, setDate, selectedMonthIndex, setMonth } = useDateStore();
   const { selectedView, setView } = useViewStore();
   const { isSideBarOpen, setSideBarOpen } = useToggleSideBarStore();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleToday = () => {
     setDate(dayjs());
@@ -37,129 +57,210 @@ export default function GoogleNavbar() {
   const currentMonthYear = dayjs().month(selectedMonthIndex).format("MMMM YYYY");
 
   return (
-    <nav className="flex h-16 items-center justify-between border-b border-[#DADCE0] bg-white px-4 shadow-sm">
+    <nav className="google-navbar">
       {/* Left Section */}
-      <div className="flex items-center gap-4">
+      <div className="navbar-left-section">
         {/* Hamburger Menu */}
         <button
           onClick={setSideBarOpen}
-          className="rounded-full p-3 text-[#5F6368] hover:bg-[#F1F3F4]"
+          className="navbar-hamburger-button"
           aria-label="Main menu"
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="navbar-hamburger-icon" />
         </button>
 
         {/* Logo and Text */}
-        <div className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center">
-            <svg className="h-10 w-10" viewBox="0 0 40 40" fill="none">
+        <div className="navbar-logo-container">
+          <div className="navbar-logo-wrapper">
+            <svg className="navbar-logo-svg" viewBox="0 0 40 40" fill="none">
               <rect width="40" height="40" rx="8" fill="#1A73E8"/>
               <path d="M28 14h-2v-2c0-.55-.45-1-1-1s-1 .45-1 1v2h-8v-2c0-.55-.45-1-1-1s-1 .45-1 1v2h-2c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14h-16V19h16v9z" fill="white"/>
             </svg>
           </div>
-          <span className="text-[22px] font-normal text-[#3C4043]">Calendar</span>
+          <span className="navbar-title-text">Calendar</span>
         </div>
       </div>
 
       {/* Center Section */}
-      <div className="flex items-center gap-3">
+      <div className="navbar-center-section">
         {/* Today Button */}
         <button
           onClick={handleToday}
-          className="rounded border border-[#DADCE0] bg-white px-6 py-2 text-sm font-medium text-[#3C4043] hover:bg-[#F8F9FA] hover:shadow-sm"
+          className="navbar-today-button"
         >
           Today
         </button>
 
         {/* Navigation Arrows */}
-        <div className="flex items-center">
+        <div className="navbar-nav-arrows">
           <button
             onClick={handlePrev}
-            className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+            className="navbar-nav-button"
             aria-label="Previous month"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="navbar-nav-icon" />
           </button>
           <button
             onClick={handleNext}
-            className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+            className="navbar-nav-button"
             aria-label="Next month"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="navbar-nav-icon" />
           </button>
         </div>
 
         {/* Current Month/Year */}
-        <h2 className="min-w-[150px] text-[22px] font-normal text-[#3C4043]">
+        <h2 className="navbar-month-year">
           {currentMonthYear}
         </h2>
       </div>
 
       {/* Right Section */}
-      <div className="flex items-center gap-2">
+      <div className="navbar-right-section">
         {/* Search Icon */}
         <button
-          className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+          className="navbar-icon-button"
           aria-label="Search"
         >
-          <Search className="h-5 w-5" />
+          <Search className="navbar-icon" />
         </button>
 
         {/* Help Icon */}
         <button
-          className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+          className="navbar-icon-button"
           aria-label="Help"
         >
-          <HelpCircle className="h-5 w-5" />
+          <HelpCircle className="navbar-icon" />
         </button>
 
         {/* Settings Icon */}
         <button
-          className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+          className="navbar-icon-button"
           aria-label="Settings"
         >
-          <Settings className="h-5 w-5" />
+          <Settings className="navbar-icon" />
         </button>
 
-        {/* View Selector Dropdown */}
-        <div className="relative">
-          <select
-            value={selectedView}
-            onChange={(e) => setView(e.target.value)}
-            className={cn(
-              "cursor-pointer appearance-none rounded border bg-white px-4 py-2 pr-8 text-sm font-medium text-[#3C4043] hover:bg-[#F8F9FA] focus:outline-none",
-              selectedView === "month" ? "border-[#1A73E8]" : "border-[#DADCE0]"
-            )}
+        {/* View Selector Dropdown - Pill-shaped Button Group */}
+        <div className="navbar-view-selector-wrapper" ref={dropdownRef}>
+          {/* Calendar Icon Button (Left) */}
+          <button className="navbar-view-calendar-button" aria-label="Calendar">
+            <Calendar className="navbar-view-calendar-icon" />
+          </button>
+
+          {/* Checkmark Button (Middle) */}
+          <button className="navbar-view-check-button" aria-label="Tasks">
+            <Check className="navbar-view-check-icon" />
+          </button>
+
+          {/* Dropdown Selector (Right) */}
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="navbar-view-selector"
           >
-            <option value="month">Month</option>
-            <option value="week">Week</option>
-            <option value="day">Day</option>
-          </select>
-          <ChevronRight className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 rotate-90 text-[#5F6368]" />
-        </div>
+            {selectedView.charAt(0).toUpperCase() + selectedView.slice(1)}
+          </button>
+          <ChevronRight className="navbar-view-selector-chevron" />
 
-        {/* Check Icon */}
-        <button
-          className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
-          aria-label="Tasks"
-        >
-          <Check className="h-5 w-5" />
-        </button>
+          {/* Custom Dropdown Menu */}
+          {isDropdownOpen && (
+            <div className="navbar-view-dropdown-menu">
+              {/* View Options */}
+              <button
+                onClick={() => {
+                  setView("day");
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>Day</span>
+                <span className="navbar-dropdown-item-shortcut">D</span>
+              </button>
+              <button
+                onClick={() => {
+                  setView("week");
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>Week</span>
+                <span className="navbar-dropdown-item-shortcut">W</span>
+              </button>
+              <button
+                onClick={() => {
+                  setView("month");
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>Month</span>
+                <span className="navbar-dropdown-item-shortcut">M</span>
+              </button>
+              <button
+                onClick={() => {
+                  // Year view not implemented yet
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>Year</span>
+                <span className="navbar-dropdown-item-shortcut">Y</span>
+              </button>
+              <button
+                onClick={() => {
+                  // Schedule view not implemented yet
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>Schedule</span>
+                <span className="navbar-dropdown-item-shortcut">A</span>
+              </button>
+              <button
+                onClick={() => {
+                  // 4 days view not implemented yet
+                  setIsDropdownOpen(false);
+                }}
+                className="navbar-dropdown-item"
+              >
+                <span>4 days</span>
+                <span className="navbar-dropdown-item-shortcut">X</span>
+              </button>
+
+              {/* Separator */}
+              <div className="navbar-dropdown-separator"></div>
+
+              {/* Checkbox Items */}
+              <button className="navbar-dropdown-checkbox-item">
+                <Check className="navbar-dropdown-checkmark" />
+                <span>Show weekends</span>
+              </button>
+              <button className="navbar-dropdown-checkbox-item">
+                <span className="navbar-dropdown-checkmark"></span>
+                <span>Show declined events</span>
+              </button>
+              <button className="navbar-dropdown-checkbox-item">
+                <Check className="navbar-dropdown-checkmark" />
+                <span>Show completed tasks</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Grid Icon */}
         <button
-          className="rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4]"
+          className="navbar-icon-button"
           aria-label="Apps"
         >
-          <Grid3x3 className="h-5 w-5" />
+          <Grid3x3 className="navbar-icon" />
         </button>
 
         {/* Profile Avatar */}
         <button
-          className="ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1A73E8] text-sm font-medium text-white hover:opacity-90"
+          className="navbar-profile-avatar"
           aria-label="Account"
         >
-          <User className="h-4 w-4" />
+          <User className="navbar-profile-icon" />
         </button>
       </div>
     </nav>

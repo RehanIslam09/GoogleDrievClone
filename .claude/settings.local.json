@@ -4,7 +4,22 @@
       "Bash(npx drizzle-kit generate:*)",
       "Bash(npx drizzle-kit push:*)",
       "Bash(dir:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(nul)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(if exist \".next\" rd /s /q \".next\")",
+      "Bash(cmd /c \"if exist .next rd /s /q .next\")",
+      "Bash(npm run dev:*)",
+      "Bash(npx prettier --write app/components.css)",
+      "Bash(Get-Content \"c:\\Users\\rehan\\SST_Hackathon\\SST_Hackathon\\google-calendar-clone-main\\app\\components.css\")",
+      "Bash(Select-String -Pattern \"calendar-grid-weekday-cell|calendar-grid-date-container|calendar-grid-date-text\" -Context 2,2)",
+      "Bash(taskkill:*)",
+      "Bash(npx kill-port:*)",
+      "Bash(timeout 10 bash -c \"until curl -s http://localhost:3000 > nul 2>&1; do sleep 1; done; echo ''Server is up''\")",
+      "Bash(timeout 10 bash:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

@@ -26,15 +26,15 @@ export default function GoogleCalendarGrid() {
   const sixWeeks = allWeeks.slice(0, 6);
 
   return (
-    <div className="flex h-full w-full flex-col bg-white">
+    <div className="calendar-grid-container">
       {/* Weekday Header Row */}
-      <div className="grid grid-cols-7 border-b border-[#e0e0e0] bg-white">
+      <div className="calendar-grid-weekday-header">
         {weekDays.map((day, index) => (
           <div
             key={index}
-            className="flex items-center justify-center border-r border-[#e0e0e0] py-3 last:border-r-0"
+            className="calendar-grid-weekday-cell"
           >
-            <span className="text-[11px] font-medium uppercase tracking-[0.8px] text-[#70757a]">
+            <span className="calendar-grid-weekday-text">
               {day}
             </span>
           </div>
@@ -42,7 +42,7 @@ export default function GoogleCalendarGrid() {
       </div>
 
       {/* 6-Week Calendar Grid */}
-      <div className="grid flex-1 grid-cols-7 grid-rows-6">
+      <div className="calendar-grid-weeks">
         {sixWeeks.map((week, weekIndex) =>
           week.map((day, dayIndex) => {
             const cellKey = `${weekIndex}-${dayIndex}`;
@@ -52,7 +52,7 @@ export default function GoogleCalendarGrid() {
               return (
                 <div
                   key={cellKey}
-                  className="flex flex-col border-b border-r border-[#e0e0e0] bg-white last:border-r-0"
+                  className="calendar-grid-cell-empty"
                 />
               );
             }
@@ -80,21 +80,20 @@ export default function GoogleCalendarGrid() {
               <div
                 key={cellKey}
                 onClick={() => handleCellClick(day)}
-                className="group flex flex-col border-b border-r border-[#e0e0e0] bg-white p-2 transition-colors hover:bg-gray-100 last:border-r-0"
+                className="group calendar-grid-cell"
               >
                 {/* Date Number */}
-                <div className="mb-1 flex items-start justify-start">
+                <div className="calendar-grid-date-container">
                   {isToday ? (
-                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1a73e8]">
-                      <span className="text-sm font-medium text-white">
+                    <div className="calendar-grid-date-today">
+                      <span className="calendar-grid-date-today-text">
                         {day.date()}
                       </span>
                     </div>
                   ) : (
                     <span
                       className={cn(
-                        "text-sm font-medium",
-                        isPrevNextMonth ? "text-[#70757a]" : "text-[#3c4043]"
+                        isPrevNextMonth ? "calendar-grid-date-text-dim" : "calendar-grid-date-text"
                       )}
                     >
                       {day.date()}
@@ -103,7 +102,7 @@ export default function GoogleCalendarGrid() {
                 </div>
 
                 {/* Events Container */}
-                <div className="flex flex-1 flex-col gap-1 overflow-hidden">
+                <div className="calendar-grid-events-container">
                   {/* Holidays */}
                   {dayHolidays.slice(0, MAX_VISIBLE_ITEMS - (dayEvents.length + dayTasks.length > 0 ? dayEvents.length + dayTasks.length : 0)).map((holiday) => (
                     <button
@@ -112,7 +111,7 @@ export default function GoogleCalendarGrid() {
                         e.stopPropagation();
                         openHolidayCard(holiday);
                       }}
-                      className="w-full truncate rounded-md bg-green-700 px-2 py-0.5 text-left text-xs text-white hover:bg-green-800"
+                      className="calendar-grid-holiday-button"
                     >
                       {holiday.name}
                     </button>
@@ -126,7 +125,7 @@ export default function GoogleCalendarGrid() {
                         e.stopPropagation();
                         openEventSummary(event);
                       }}
-                      className="w-full truncate rounded-md bg-[#1a73e8] px-2 py-0.5 text-left text-xs text-white hover:bg-[#1557b0]"
+                      className="calendar-grid-event-button"
                     >
                       {event.title}
                     </button>
@@ -141,8 +140,8 @@ export default function GoogleCalendarGrid() {
                         openTaskSummary(task);
                       }}
                       className={cn(
-                        "w-full truncate rounded-md bg-[#1a73e8] px-2 py-0.5 text-left text-xs text-white hover:bg-[#1557b0]",
-                        task.completed && "opacity-60 line-through"
+                        "calendar-grid-task-button",
+                        task.completed && "calendar-grid-task-button-completed"
                       )}
                     >
                       {task.title}
@@ -156,7 +155,7 @@ export default function GoogleCalendarGrid() {
                         e.stopPropagation();
                         handleCellClick(day);
                       }}
-                      className="text-left text-xs font-medium text-[#5f6368] hover:text-[#3c4043]"
+                      className="calendar-grid-overflow-button"
                     >
                       +{remainingCount} more
                     </button>

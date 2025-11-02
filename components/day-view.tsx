@@ -25,25 +25,24 @@ export default function DayView() {
   const isToday = userSelectedDate.format("YYYY-MM-DD") === dayjs().format("YYYY-MM-DD");
 
   return (
-    <div className="flex h-full flex-col bg-white">
+    <div className="day-view-container">
       {/* Day Header */}
-      <div className="grid grid-cols-[64px_1fr] border-b border-google-gray-200">
+      <div className="day-view-header">
         {/* Timezone cell */}
-        <div className="flex items-center justify-center border-r border-google-gray-200 py-4">
-          <span className="text-[10px] text-google-gray-500">GMT+5:30</span>
+        <div className="day-view-timezone-cell">
+          <span className="day-view-timezone-text">GMT+5:30</span>
         </div>
 
         {/* Day header */}
-        <div className="flex items-center justify-center gap-2 py-2">
-          <div className={cn("text-[11px] font-medium uppercase", isToday ? "text-google-blue-500" : "text-google-gray-600")}>
+        <div className="day-view-day-header">
+          <div className={cn(isToday ? "day-view-day-name-today" : "day-view-day-name")}>
             {userSelectedDate.format("dddd")}
           </div>
           <div
             className={cn(
-              "flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal transition-colors",
               isToday
-                ? "bg-google-blue-500 text-white"
-                : "text-google-gray-700"
+                ? "day-view-day-number-today"
+                : "day-view-day-number"
             )}
           >
             {userSelectedDate.format("D")}
@@ -53,13 +52,13 @@ export default function DayView() {
 
       {/* Time Grid */}
       <ScrollArea className="flex-1">
-        <div className="grid grid-cols-[64px_1fr]">
+        <div className="day-view-time-grid">
           {/* Time Column */}
-          <div className="border-r border-google-gray-200">
+          <div className="day-view-time-column">
             {getHours.map((hour, index) => (
-              <div key={index} className="relative h-12 border-b border-google-gray-100">
+              <div key={index} className="day-view-time-slot">
                 {hour.hour() !== 0 && (
-                  <div className="absolute -top-2 right-2 text-[10px] text-google-gray-500">
+                  <div className="day-view-time-label">
                     {hour.format("h A")}
                   </div>
                 )}
@@ -68,7 +67,7 @@ export default function DayView() {
           </div>
 
           {/* Day Column */}
-          <div className="relative">
+          <div className="day-view-day-column">
             {getHours.map((hour, hourIndex) => {
               const cellDate = userSelectedDate.hour(hour.hour()).minute(0);
 
@@ -86,14 +85,14 @@ export default function DayView() {
               return (
                 <div
                   key={hourIndex}
-                  className="relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50"
+                  className="day-view-hour-cell"
                   onClick={() => {
                     setDate(cellDate);
                     openPopover();
                   }}
                 >
                   {/* Events, Tasks, and Holidays */}
-                  <div className="space-y-0.5 p-1">
+                  <div className="day-view-events-container">
                     {/* Holidays - show only in first hour */}
                     {cellHolidays.map((holiday) => (
                       <EventChip
@@ -144,12 +143,12 @@ export default function DayView() {
             {/* Current time indicator */}
             {isToday && (
               <div
-                className="absolute z-10 h-0.5 w-full bg-red-500"
+                className="day-view-time-indicator"
                 style={{
                   top: `${((currentTime.hour() * 60 + currentTime.minute()) / (24 * 60)) * 100}%`,
                 }}
               >
-                <div className="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500" />
+                <div className="day-view-time-indicator-dot" />
               </div>
             )}
           </div>

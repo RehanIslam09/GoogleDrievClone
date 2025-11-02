@@ -25,29 +25,28 @@ export default function WeekView() {
   const weekDays = getWeekDays(userSelectedDate);
 
   return (
-    <div className="flex h-full flex-col bg-white">
+    <div className="week-view-container">
       {/* Week Header */}
-      <div className="grid grid-cols-[64px_repeat(7,1fr)] border-b border-google-gray-200">
+      <div className="week-view-header">
         {/* Timezone cell */}
-        <div className="flex items-center justify-center border-r border-google-gray-200 py-4">
-          <span className="text-[10px] text-google-gray-500">GMT+5:30</span>
+        <div className="week-view-timezone-cell">
+          <span className="week-view-timezone-text">GMT+5:30</span>
         </div>
 
         {/* Day headers */}
         {weekDays.map(({ currentDate, today }, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center gap-1 border-r border-google-gray-200 py-2 last:border-r-0"
+            className="week-view-day-header"
           >
-            <div className={cn("text-[11px] font-medium uppercase", today ? "text-google-blue-500" : "text-google-gray-600")}>
+            <div className={cn(today ? "week-view-day-abbr-today" : "week-view-day-abbr")}>
               {currentDate.format("ddd")}
             </div>
             <div
               className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal transition-colors",
                 today
-                  ? "bg-google-blue-500 text-white"
-                  : "text-google-gray-700"
+                  ? "week-view-day-number-today"
+                  : "week-view-day-number"
               )}
             >
               {currentDate.format("D")}
@@ -58,13 +57,13 @@ export default function WeekView() {
 
       {/* Time Grid */}
       <ScrollArea className="flex-1">
-        <div className="grid grid-cols-[64px_repeat(7,1fr)]">
+        <div className="week-view-time-grid">
           {/* Time Column */}
-          <div className="border-r border-google-gray-200">
+          <div className="week-view-time-column">
             {getHours.map((hour, index) => (
-              <div key={index} className="relative h-12 border-b border-google-gray-100">
+              <div key={index} className="week-view-time-slot">
                 {hour.hour() !== 0 && (
-                  <div className="absolute -top-2 right-2 text-[10px] text-google-gray-500">
+                  <div className="week-view-time-label">
                     {hour.format("h A")}
                   </div>
                 )}
@@ -78,7 +77,7 @@ export default function WeekView() {
             const isToday = today;
 
             return (
-              <div key={dayIndex} className="relative border-r border-google-gray-200 last:border-r-0">
+              <div key={dayIndex} className="week-view-day-column">
                 {getHours.map((hour, hourIndex) => {
                   const cellDate = dayDate.hour(hour.hour()).minute(0);
 
@@ -96,14 +95,14 @@ export default function WeekView() {
                   return (
                     <div
                       key={hourIndex}
-                      className="relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50"
+                      className="week-view-hour-cell"
                       onClick={() => {
                         setDate(cellDate);
                         openPopover();
                       }}
                     >
                       {/* Events, Tasks, and Holidays */}
-                      <div className="space-y-0.5 p-1">
+                      <div className="week-view-events-container">
                         {/* Holidays - show only in first hour */}
                         {cellHolidays.map((holiday) => (
                           <EventChip
@@ -154,12 +153,12 @@ export default function WeekView() {
                 {/* Current time indicator */}
                 {isToday && (
                   <div
-                    className="absolute z-10 h-0.5 w-full bg-red-500"
+                    className="week-view-time-indicator"
                     style={{
                       top: `${((currentTime.hour() * 60 + currentTime.minute()) / (24 * 60)) * 100}%`,
                     }}
                   >
-                    <div className="absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500" />
+                    <div className="week-view-time-indicator-dot" />
                   </div>
                 )}
               </div>

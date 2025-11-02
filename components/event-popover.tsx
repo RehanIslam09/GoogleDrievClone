@@ -87,24 +87,24 @@ export default function EventPopover({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="event-popover-overlay"
       onClick={handleClose}
     >
       <div
         ref={popoverRef}
-        className="w-full max-w-lg rounded-lg bg-white shadow-2xl"
+        className="event-popover-container"
         onClick={handlePopoverClick}
       >
-        <div className="flex items-center justify-between border-b border-google-gray-200 px-6 py-4">
+        <div className="event-popover-header">
           {popoverMode === "event" ? (
-            <div className="flex items-center gap-2">
-              <HiOutlineMenuAlt4 className="h-5 w-5 text-google-gray-600" />
-              <span className="text-sm font-medium text-google-gray-700">Create Event</span>
+            <div className="event-popover-header-title">
+              <HiOutlineMenuAlt4 className="event-popover-header-icon" />
+              <span className="event-popover-header-text">Create Event</span>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="event-popover-header-title">
               <Checkbox disabled />
-              <span className="text-sm font-medium text-google-gray-700">Create Task</span>
+              <span className="event-popover-header-text">Create Task</span>
             </div>
           )}
           <Button
@@ -112,29 +112,28 @@ export default function EventPopover({
             size="icon"
             type="button"
             onClick={handleClose}
-            className="hover:bg-google-gray-100"
+            className="event-popover-close-button"
           >
-            <IoCloseSharp className="h-5 w-5 text-google-gray-600" />
+            <IoCloseSharp className="event-popover-header-icon" />
           </Button>
         </div>
-        <form className="space-y-4 p-6" action={onSubmit}>
+        <form className="event-popover-form" action={onSubmit}>
           <div>
             <Input
               type="text"
               name="title"
               placeholder="Add title"
-              className="rounded-none border-0 border-b border-google-gray-300 px-0 text-2xl font-normal text-google-gray-800 placeholder:text-google-gray-400 focus-visible:border-b-2 focus-visible:border-google-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="event-popover-title-input"
             />
           </div>
-          <div className="flex items-center gap-2 border-b border-google-gray-200 pb-4">
+          <div className="event-popover-mode-selector">
             <Button
               type="button"
               size="sm"
               className={cn(
-                "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
                 popoverMode === "event"
-                  ? "bg-google-blue-100 text-google-blue-700 hover:bg-google-blue-100"
-                  : "bg-transparent text-google-gray-700 hover:bg-google-gray-100",
+                  ? "event-popover-mode-button-active"
+                  : "event-popover-mode-button",
               )}
               onClick={() => setPopoverMode("event")}
             >
@@ -144,10 +143,9 @@ export default function EventPopover({
               type="button"
               size="sm"
               className={cn(
-                "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
                 popoverMode === "task"
-                  ? "bg-google-blue-100 text-google-blue-700 hover:bg-google-blue-100"
-                  : "bg-transparent text-google-gray-700 hover:bg-google-gray-100",
+                  ? "event-popover-mode-button-active"
+                  : "event-popover-mode-button",
               )}
               onClick={() => setPopoverMode("task")}
             >
@@ -155,10 +153,10 @@ export default function EventPopover({
             </Button>
           </div>
 
-          <div className="flex items-center gap-3">
-            <FiClock className="h-5 w-5 text-google-gray-600" />
-            <div className="flex flex-col gap-1">
-              <p className="text-sm text-google-gray-700">{dayjs(date).format("dddd, MMMM D")}</p>
+          <div className="event-popover-field-row">
+            <FiClock className="event-popover-field-icon" />
+            <div className="event-popover-datetime-container">
+              <p className="event-popover-date-text">{dayjs(date).format("dddd, MMMM D")}</p>
               {popoverMode === "event" && (
                 <AddTime onTimeSelect={setSelectedTime} />
               )}
@@ -170,19 +168,19 @@ export default function EventPopover({
           </div>
 
           {popoverMode === "event" && (
-            <div className="flex items-center gap-3">
-              <HiOutlineUsers className="h-5 w-5 text-google-gray-600" />
+            <div className="event-popover-field-row">
+              <HiOutlineUsers className="event-popover-field-icon" />
               <Input
                 type="text"
                 name="guests"
                 placeholder="Add guests"
-                className="rounded-md border-0 bg-google-gray-50 text-sm text-google-gray-800 placeholder:text-google-gray-400 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-google-blue-500"
+                className="event-popover-input"
               />
             </div>
           )}
 
-          <div className="flex items-center gap-3">
-            <HiOutlineMenuAlt2 className="h-5 w-5 text-google-gray-600" />
+          <div className="event-popover-field-row">
+            <HiOutlineMenuAlt2 className="event-popover-field-icon" />
             <Input
               type="text"
               name="description"
@@ -191,42 +189,42 @@ export default function EventPopover({
                   ? "Add description"
                   : "Add description or details"
               }
-              className="rounded-md border-0 bg-google-gray-50 text-sm text-google-gray-800 placeholder:text-google-gray-400 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-google-blue-500"
+              className="event-popover-input"
             />
           </div>
 
           {popoverMode === "event" && (
-            <div className="flex items-center gap-3">
-              <IoMdCalendar className="h-5 w-5 text-google-gray-600" />
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-medium text-google-gray-700">User</p>
-                  <div className="h-4 w-4 rounded-full bg-google-blue-500"></div>
+            <div className="event-popover-field-row">
+              <IoMdCalendar className="event-popover-field-icon" />
+              <div className="event-popover-calendar-info">
+                <div className="event-popover-calendar-user">
+                  <p className="event-popover-calendar-user-name">User</p>
+                  <div className="event-popover-calendar-color"></div>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-google-gray-500">
+                <div className="event-popover-calendar-meta">
                   <span>Busy</span>
-                  <div className="h-1 w-1 rounded-full bg-google-gray-400"></div>
+                  <div className="event-popover-meta-dot"></div>
                   <span>Default visibility</span>
-                  <div className="h-1 w-1 rounded-full bg-google-gray-400"></div>
+                  <div className="event-popover-meta-dot"></div>
                   <span>Notify 30 minutes before</span>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="flex justify-end gap-2 pt-2">
+          <div className="event-popover-actions">
             <Button
               type="submit"
               disabled={isPending}
-              className="bg-google-blue-500 text-white hover:bg-google-blue-600"
+              className="event-popover-save-button"
             >
               {isPending ? "Saving..." : "Save"}
             </Button>
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="event-popover-error">{error}</p>}
           {success && (
-            <p className="text-sm text-google-green-600">
+            <p className="event-popover-success">
               {popoverMode === "event" ? "Event created!" : "Task created!"}
             </p>
           )}
