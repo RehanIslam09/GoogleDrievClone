@@ -17,6 +17,7 @@ import {
   Palette,
   Printer,
   Download,
+  X,
 } from "lucide-react";
 import { useDateStore, useViewStore, useToggleSideBarStore, useTasksViewStore } from "@/lib/store";
 import dayjs from "dayjs";
@@ -34,12 +35,14 @@ export default function GoogleNavbar() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [isAppsOpen, setIsAppsOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchContainerRef = useRef<HTMLDivElement>(null);
   const settingsRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
   const appsRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -130,6 +133,23 @@ export default function GoogleNavbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isAppsOpen]);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (profileRef.current && !profileRef.current.contains(event.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    if (isProfileOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isProfileOpen]);
 
   const handleToday = () => {
     setDate(dayjs());
@@ -503,15 +523,79 @@ export default function GoogleNavbar() {
         )}
 
         {/* Profile Button */}
-        <button
-          className="navbar-profile-button"
-          aria-label="Account"
-        >
-          <span className="navbar-profile-text">Google</span>
-          <div className="navbar-profile-avatar">
-            <span className="navbar-profile-letter">R</span>
-          </div>
-        </button>
+        <div className="navbar-profile-wrapper" ref={profileRef}>
+          <button
+            className="navbar-profile-button"
+            aria-label="Account"
+            onClick={() => setIsProfileOpen(!isProfileOpen)}
+          >
+            <span className="navbar-profile-text">Google</span>
+            <div className="navbar-profile-avatar">
+              <span className="navbar-profile-letter">R</span>
+            </div>
+          </button>
+
+          {/* Profile Dropdown Modal */}
+          {isProfileOpen && (
+            <div className="profile-dropdown-modal">
+              {/* Close button */}
+              <button
+                onClick={() => setIsProfileOpen(false)}
+                className="profile-dropdown-close"
+                aria-label="Close"
+              >
+                <X className="profile-dropdown-close-icon" />
+              </button>
+
+              {/* Email */}
+              <div className="profile-dropdown-email">rehan.25bcs10377@sst.scaler.com</div>
+              <div className="profile-dropdown-managed">Managed by sst.scaler.com</div>
+
+              {/* Avatar */}
+              <div className="profile-dropdown-avatar-container">
+                <div className="profile-dropdown-avatar">
+                  <span className="profile-dropdown-avatar-letter">R</span>
+                  <div className="profile-dropdown-avatar-badge">
+                    <svg className="profile-dropdown-avatar-badge-icon" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Greeting */}
+              <div className="profile-dropdown-greeting">Hi, Rehan!</div>
+
+              {/* Manage account button */}
+              <button className="profile-dropdown-manage-button">
+                Manage your Google Account
+              </button>
+
+              {/* Action buttons */}
+              <div className="profile-dropdown-actions">
+                <button className="profile-dropdown-action-button">
+                  <svg className="profile-dropdown-action-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                  </svg>
+                  <span>Add account</span>
+                </button>
+                <button className="profile-dropdown-action-button">
+                  <svg className="profile-dropdown-action-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+                  </svg>
+                  <span>Sign out</span>
+                </button>
+              </div>
+
+              {/* Footer links */}
+              <div className="profile-dropdown-footer">
+                <a href="#" className="profile-dropdown-footer-link">Privacy Policy</a>
+                <span className="profile-dropdown-footer-dot">•</span>
+                <a href="#" className="profile-dropdown-footer-link">Terms of Service</a>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );
