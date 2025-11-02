@@ -3791,3 +3791,349 @@
   background-color: #f1f3f4 !important;
   border-color: #c4c7c9 !important;
 }
+
+/* ========================================
+   GOOGLE SIDE PANEL STYLES
+   ======================================== */
+
+/* Side Panel Container */
+.google-side-panel-container {
+  position: fixed !important;
+  top: 64px !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: flex !important;
+  z-index: 100 !important;
+  pointer-events: none !important;
+}
+
+/* Icon Bar */
+.google-side-panel-bar {
+  width: 56px !important;
+  background-color: #f8f9fa !important;
+  border-left: 1px solid #dadce0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 8px 0 !important;
+  gap: 4px !important;
+  pointer-events: all !important;
+}
+
+/* Icon Button */
+.google-side-panel-icon-button {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  color: #5f6368 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  border: none !important;
+}
+
+.google-side-panel-icon-button:hover {
+  background-color: rgba(60, 64, 67, 0.08) !important;
+}
+
+.google-side-panel-icon-active {
+  background-color: rgba(26, 115, 232, 0.12) !important;
+  color: #1a73e8 !important;
+}
+
+/* Divider */
+.google-side-panel-divider {
+  width: 32px !important;
+  height: 1px !important;
+  background-color: #dadce0 !important;
+  margin: 4px 0 !important;
+}
+
+/* Toggle Button (Fixed Position) */
+.google-side-panel-toggle-button-fixed {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 16px !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: white !important;
+  color: #5f6368 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  border: 1px solid #dadce0 !important;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+  z-index: 101 !important;
+}
+
+.google-side-panel-toggle-button-fixed:hover {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15) !important;
+}
+
+/* Toggle Button (Internal - Deprecated) */
+.google-side-panel-toggle-button {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: white !important;
+  color: #5f6368 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  border: 1px solid #dadce0 !important;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+.google-side-panel-toggle-button:hover {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15) !important;
+}
+
+/* Expanded Content Panel */
+.google-side-panel-content {
+  width: 0 !important;
+  background-color: white !important;
+  border-left: 1px solid #dadce0 !important;
+  overflow: hidden !important;
+  transition: width 0.3s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+  pointer-events: all !important;
+}
+
+.google-side-panel-content-expanded {
+  width: 360px !important;
+}
+
+/* App Content */
+.google-side-panel-app-content {
+  width: 360px !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Header */
+.google-side-panel-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid #e8eaed !important;
+  min-height: 64px !important;
+}
+
+.google-side-panel-title {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+}
+
+.google-side-panel-close-button {
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  color: #5f6368 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  border: none !important;
+}
+
+.google-side-panel-close-button:hover {
+  background-color: rgba(60, 64, 67, 0.08) !important;
+}
+
+/* Body */
+.google-side-panel-body {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 16px !important;
+}
+
+/* ========================================
+   GOOGLE MARKETPLACE MODAL STYLES
+   ======================================== */
+
+/* Overlay */
+.google-marketplace-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(2px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  padding: 24px !important;
+}
+
+/* Modal */
+.google-marketplace-modal {
+  width: 100% !important;
+  max-width: 1200px !important;
+  max-height: 90vh !important;
+  background-color: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Header */
+.google-marketplace-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 20px 24px !important;
+  border-bottom: 1px solid #e8eaed !important;
+}
+
+.google-marketplace-close {
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: transparent !important;
+  color: #5f6368 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  border: none !important;
+}
+
+.google-marketplace-close:hover {
+  background-color: rgba(60, 64, 67, 0.08) !important;
+}
+
+/* Search Bar */
+.google-marketplace-search {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 24px !important;
+  border-bottom: 1px solid #e8eaed !important;
+  background-color: #f8f9fa !important;
+}
+
+.google-marketplace-search-input {
+  flex: 1 !important;
+  border: none !important;
+  background-color: transparent !important;
+  font-size: 16px !important;
+  color: #3c4043 !important;
+  outline: none !important;
+  font-family: Roboto, Arial, sans-serif !important;
+}
+
+.google-marketplace-search-input::placeholder {
+  color: #80868b !important;
+}
+
+/* Featured Section */
+.google-marketplace-featured {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: #e8f0fe !important;
+  border-radius: 12px !important;
+  padding: 32px !important;
+  margin: 24px !important;
+}
+
+.google-marketplace-featured-content {
+  flex: 1 !important;
+}
+
+.google-marketplace-featured-apps {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+  margin-left: 32px !important;
+}
+
+.google-marketplace-featured-app {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px !important;
+  background-color: white !important;
+  border-radius: 8px !important;
+  transition: box-shadow 0.2s !important;
+  cursor: pointer !important;
+}
+
+.google-marketplace-featured-app:hover {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+.google-marketplace-see-all {
+  padding: 10px 24px !important;
+  background-color: #1a73e8 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+}
+
+.google-marketplace-see-all:hover {
+  background-color: #1765cc !important;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+/* Recommended Section */
+.google-marketplace-recommended {
+  padding: 0 24px 24px !important;
+}
+
+.google-marketplace-apps-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.google-marketplace-app-card {
+  background-color: white !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 8px !important;
+  transition: box-shadow 0.2s !important;
+  cursor: pointer !important;
+}
+
+.google-marketplace-app-card:hover {
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+}
+
+.google-marketplace-install-button {
+  padding: 8px 16px !important;
+  background-color: transparent !important;
+  color: #1a73e8 !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 4px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif !important;
+}
+
+.google-marketplace-install-button:hover {
+  background-color: #f8f9fa !important;
+}

@@ -24,6 +24,7 @@ import EventPopover from "./event-popover";
 import { EventSummaryPopover } from "./event-summary-popover";
 import TaskPopupCard from "./task-popup-card";
 import HolidayEventCard from "./holiday-event-card";
+import GoogleSidePanel from "./google-side-panel";
 import { useEffect, useTransition } from "react";
 import dayjs from "dayjs";
 import {
@@ -228,6 +229,9 @@ export default function MainView({
           onClose={closeHolidayCard}
         />
       )}
+
+      {/* Google Side Panel */}
+      <GoogleSidePanel />
     </div>
   );
 }
