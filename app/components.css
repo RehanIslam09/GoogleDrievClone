@@ -18,7 +18,7 @@
 
 /* Create button - Main clickable button */
 .create-button {
-  @apply flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-[14px] font-medium text-[#3c4043] shadow-[0_1px_2px_0_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] transition-all duration-150 hover:shadow-[0_1px_3px_0_rgba(60,64,67,0.3),0_4px_8px_3px_rgba(60,64,67,0.15)] focus:outline-none;
+  @apply flex items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-[14px] font-medium text-[#3c4043] shadow-[0_1px_2px_0_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] transition-all duration-150 hover:shadow-[0_1px_3px_0_rgba(60,64,67,0.3),0_4px_8px_3px_rgba(60,64,67,0.15)] focus:outline-none;
 }
 
 /* Create button - Plus icon */
@@ -43,12 +43,12 @@
 
 /* Create button - Dropdown menu container */
 .create-button-dropdown {
-  @apply absolute left-0 top-full z-50 mt-2 w-60 rounded-lg border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
+  @apply absolute left-0 top-full z-50 mt-2 w-56 rounded-2xl border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
 }
 
 /* Create button - Dropdown menu item (Event/Task/Appointment) */
 .create-button-dropdown-item {
-  @apply block w-full px-5 py-2.5 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4];
+  @apply block w-full px-6 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4];
 }
 
 /* ==========================================================================
