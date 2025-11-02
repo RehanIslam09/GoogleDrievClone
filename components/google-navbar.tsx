@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import {
   Menu,
   Search,
@@ -72,10 +73,13 @@ export default function GoogleNavbar() {
         {/* Logo and Text */}
         <div className="navbar-logo-container">
           <div className="navbar-logo-wrapper">
-            <svg className="navbar-logo-svg" viewBox="0 0 40 40" fill="none">
-              <rect width="40" height="40" rx="8" fill="#1A73E8"/>
-              <path d="M28 14h-2v-2c0-.55-.45-1-1-1s-1 .45-1 1v2h-8v-2c0-.55-.45-1-1-1s-1 .45-1 1v2h-2c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V16c0-1.1-.9-2-2-2zm0 14h-16V19h16v9z" fill="white"/>
-            </svg>
+            <Image
+              src="/img/google-calendar.png"
+              width={40}
+              height={40}
+              alt="Google Calendar"
+              className="navbar-logo-svg"
+            />
           </div>
           <span className="navbar-title-text">Calendar</span>
         </div>

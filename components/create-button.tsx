@@ -101,6 +101,24 @@ export default function CreateButton({
               Task
             </button>
             <button
+              onClick={() => setIsOpen(false)}
+              className="create-button-dropdown-item"
+            >
+              Out of office
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="create-button-dropdown-item"
+            >
+              Focus time
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="create-button-dropdown-item"
+            >
+              Working location
+            </button>
+            <button
               onClick={handleAppointmentClick}
               className="create-button-dropdown-item"
             >

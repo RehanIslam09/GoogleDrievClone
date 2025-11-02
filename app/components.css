@@ -1369,7 +1369,7 @@
 
 /* Mode button (active) */
 .event-popover-mode-button-active {
-  @apply bg-google-blue-100 text-google-blue-700 hover:bg-google-blue-100 rounded-full px-4 py-1.5 text-sm font-medium transition-colors;
+  @apply rounded-full bg-google-blue-100 px-4 py-1.5 text-sm font-medium text-google-blue-700 transition-colors hover:bg-google-blue-100;
 }
 
 /* Field row container */

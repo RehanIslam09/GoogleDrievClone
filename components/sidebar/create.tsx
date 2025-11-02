@@ -1,89 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Plus, ChevronDown } from "lucide-react";
+
+const menuItems = [
+  { id: "event", label: "Event" },
+  { id: "task", label: "Task" },
+  { id: "out-of-office", label: "Out of office" },
+  { id: "focus-time", label: "Focus time" },
+  { id: "working-location", label: "Working location" },
+  { id: "appointment-schedule", label: "Appointment schedule" },
+];
 
 export default function CreateButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleMenuItemClick = (itemId: string) => {
+    console.log(`Creating: ${itemId}`);
+    setIsOpen(false);
+    // Add logic for each menu item here
+  };
 
   return (
-    <div className="relative flex flex-col items-center">
-      {/* Floating Create Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 150 }}
+    <div className="relative mb-5 px-2" ref={dropdownRef}>
+      {/* Google Calendar Style Create Button */}
+      <Button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex w-full items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-[14px] font-medium text-[#3c4043] shadow-[0_1px_2px_0_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] transition-all duration-150 hover:bg-[#fafafb] hover:shadow-[0_1px_3px_0_rgba(60,64,67,0.3),0_4px_8px_3px_rgba(60,64,67,0.15)] focus:outline-none"
       >
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          className="rounded-full bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 shadow-lg shadow-blue-400/40 flex items-center justify-center"
-        >
-          <Plus className={`transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} size={26} />
-        </Button>
-      </motion.div>
+        <Plus className="h-5 w-5 text-[#3c4043]" />
+        <span>Create</span>
+        <ChevronDown className="h-4 w-4 text-[#3c4043]" />
+      </Button>
 
-      {/* Modal / Popup */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-          >
-            <motion.div
-              className="bg-white dark:bg-neutral-900 rounded-2xl p-6 w-[90%] max-w-md shadow-2xl relative"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <div className="absolute left-2 top-full z-50 mt-2 w-56 rounded-2xl border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)]">
+          {menuItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => handleMenuItemClick(item.id)}
+              className="block w-full px-6 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4]"
             >
-              <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                Create New Event
-              </h2>
-
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Event title"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-
-                <input
-                  type="datetime-local"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-
-                <textarea
-                  placeholder="Description"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-                ></textarea>
-
-                <div className="flex justify-end gap-2 pt-2">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => setIsOpen(false)}
-                    className="text-gray-500 hover:text-gray-700 dark:text-gray-300"
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    Create
-                  </Button>
-                </div>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {item.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -78,10 +78,10 @@ export default function HeaderLeft() {
           <Menu className="size-6" />
         </Button>
         <Image
-          src={`/img/calendar_${todaysDate.date().toString()}_2x.png`}
+          src="/img/google-calendar.png"
           width={40}
           height={40}
-          alt="icon"
+          alt="Google Calendar icon"
         />
         <h1 className="text-xl">Calendar</h1>
       </div>

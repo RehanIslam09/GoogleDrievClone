@@ -99,6 +99,7 @@ export default function GoogleSidebar() {
 
       {/* Search for People */}
       <div className="sidebar-search-container">
+        <h3 className="mb-2 px-1 text-[14px] font-medium text-[#3c4043]">Meet with...</h3>
         <div className="sidebar-search-input-wrapper">
           <Users className="sidebar-search-icon" />
           <input
@@ -119,6 +120,14 @@ export default function GoogleSidebar() {
           >
             <span className="sidebar-section-title">Booking pages</span>
             <Plus className="sidebar-section-plus-icon" />
+          </button>
+        </div>
+
+        {/* Time Insights */}
+        <div className="sidebar-calendar-section">
+          <button className="sidebar-calendar-section-toggle">
+            <span className="sidebar-section-title">Time Insights</span>
+            <ChevronRight className="sidebar-calendar-section-icon" />
           </button>
         </div>
         {/* My Calendars */}

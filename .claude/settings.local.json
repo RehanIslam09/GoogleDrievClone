@@ -20,10 +20,10 @@
       "Bash(timeout 10 bash:*)",
       "Bash(git config:*)",
       "Bash(git add:*)",
-      "Bash(del nul 2)"
+      "Bash(del nul 2)",
+      "Bash(if exist \"public\\img\\google-calendar.png\" echo File exists)"
     ],
     "deny": [],
     "ask": []
   }
 }
-  
