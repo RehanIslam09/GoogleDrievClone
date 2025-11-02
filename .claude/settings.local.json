@@ -21,7 +21,9 @@
       "Bash(git config:*)",
       "Bash(git add:*)",
       "Bash(del nul 2)",
-      "Bash(if exist \"public\\img\\google-calendar.png\" echo File exists)"
+      "Bash(if exist \"public\\img\\google-calendar.png\" echo File exists)",
+      "Bash(Get-Content \"c:\\Users\\rehan\\SST_Hackathon\\SST_Hackathon\\google-calendar-clone-main\\app\\globals.css\")",
+      "Bash(Select-String -Pattern \"navbar-search\" -Context 5)"
     ],
     "deny": [],
     "ask": []

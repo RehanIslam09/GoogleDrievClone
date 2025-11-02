@@ -14,8 +14,9 @@ export default function GoogleSidebar() {
   const [bookingPagesOpen, setBookingPagesOpen] = useState(false);
   const [myCalendarsOpen, setMyCalendarsOpen] = useState(true);
   const [otherCalendarsOpen, setOtherCalendarsOpen] = useState(true);
+  const [currentMonthIndex, setCurrentMonthIndex] = useState(dayjs().month());
 
-  const miniMonth = getMonth(dayjs().month());
+  const miniMonth = getMonth(currentMonthIndex);
 
   const handleDateClick = (day: dayjs.Dayjs) => {
     setDate(day);
@@ -25,6 +26,14 @@ export default function GoogleSidebar() {
   const handleEventClick = () => {
     setDate(dayjs());
     openPopover();
+  };
+
+  const handlePrevMonth = () => {
+    setCurrentMonthIndex(currentMonthIndex - 1);
+  };
+
+  const handleNextMonth = () => {
+    setCurrentMonthIndex(currentMonthIndex + 1);
   };
 
   return (
@@ -39,13 +48,19 @@ export default function GoogleSidebar() {
         <div className="sidebar-mini-calendar">
           {/* Month/Year Header with Arrows */}
           <div className="sidebar-mini-calendar-header">
-            <button className="sidebar-mini-calendar-nav-button">
+            <button
+              className="sidebar-mini-calendar-nav-button"
+              onClick={handlePrevMonth}
+            >
               <ChevronLeft className="sidebar-mini-calendar-nav-icon" />
             </button>
             <span className="sidebar-mini-calendar-month-text">
-              {dayjs().format("MMMM YYYY")}
+              {dayjs().month(currentMonthIndex).format("MMMM YYYY")}
             </span>
-            <button className="sidebar-mini-calendar-nav-button">
+            <button
+              className="sidebar-mini-calendar-nav-button"
+              onClick={handleNextMonth}
+            >
               <ChevronRight className="sidebar-mini-calendar-nav-icon" />
             </button>
           </div>
@@ -66,7 +81,7 @@ export default function GoogleSidebar() {
 
               const isToday = day.format("DD-MM-YY") === dayjs().format("DD-MM-YY");
               const isSelected = day.format("DD-MM-YY") === userSelectedDate.format("DD-MM-YY");
-              const isPrevNextMonth = day.month() !== dayjs().month();
+              const isPrevNextMonth = day.month() !== currentMonthIndex;
 
               return (
                 <button

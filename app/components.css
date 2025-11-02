@@ -404,6 +404,61 @@
   @apply h-4 w-4;
 }
 
+/* Navbar - Search bar container (when search is active) */
+.navbar-search-container {
+  @apply flex flex-1 items-center justify-center px-16;
+}
+
+/* Navbar - Search input wrapper */
+.navbar-search-input-wrapper {
+  @apply relative flex w-full max-w-3xl items-center;
+}
+
+/* Navbar - Search input field */
+.navbar-search-input {
+  @apply h-12 w-full rounded-full border-0 bg-[#f1f3f4] pl-14 pr-14 text-[16px] text-[#3c4043] transition-colors placeholder:text-[#5f6368] hover:bg-[#e8eaed] hover:shadow-sm focus:bg-white focus:shadow-md focus:outline-none;
+}
+
+/* Navbar - Search icon inside input */
+.navbar-search-input-icon {
+  @apply absolute left-5 h-5 w-5 text-[#5f6368];
+}
+
+/* Navbar - Clear search button */
+.navbar-search-clear-button {
+  @apply absolute right-4 rounded-full p-1.5 transition-colors hover:bg-[#dadce0];
+}
+
+/* Navbar - Clear search icon */
+.navbar-search-clear-icon {
+  @apply h-5 w-5 text-[#5f6368];
+}
+
+/* Navbar - Settings dropdown wrapper */
+.navbar-settings-dropdown-wrapper {
+  @apply relative;
+}
+
+/* Navbar - Settings dropdown menu */
+.navbar-settings-dropdown {
+  @apply absolute right-0 top-full z-50 mt-2 w-48 rounded-lg border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
+}
+
+/* Navbar - Settings dropdown item */
+.navbar-settings-dropdown-item {
+  @apply flex w-full items-center gap-3 px-6 py-3 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4];
+}
+
+/* Navbar - Settings dropdown icon */
+.navbar-settings-dropdown-icon {
+  @apply h-5 w-5 text-[#5f6368];
+}
+
+/* Navbar - Settings dropdown separator */
+.navbar-settings-dropdown-separator {
+  @apply my-2 border-t border-[#dadce0];
+}
+
 /* ==========================================================================
      GOOGLE CALENDAR GRID COMPONENT (components/google-calendar-grid.tsx)
      ========================================================================== */
