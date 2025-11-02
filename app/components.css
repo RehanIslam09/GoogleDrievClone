@@ -1843,6 +1843,256 @@
 }
 
 /* ==========================================================================
+     SCHEDULE VIEW COMPONENT (components/schedule-view.tsx)
+     ========================================================================== */
+
+/* Schedule view - Main container */
+.schedule-view-container {
+  background-color: white !important;
+  overflow-y: auto !important;
+  height: calc(100vh - 64px) !important;
+  padding: 0 !important;
+}
+
+/* Schedule view - Empty state */
+.schedule-view-empty {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  padding: 48px !important;
+}
+
+.schedule-view-empty-text {
+  font-size: 16px !important;
+  color: #5f6368 !important;
+}
+
+/* Schedule view - Month header */
+.schedule-view-month-header {
+  padding: 24px 24px 12px 24px !important;
+  border-bottom: 1px solid #dadce0 !important;
+}
+
+.schedule-view-month-title {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+}
+
+/* Schedule view - Date row */
+.schedule-view-date-row {
+  display: flex !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  min-height: 48px !important;
+}
+
+/* Schedule view - Date column */
+.schedule-view-date-column {
+  width: 80px !important;
+  min-width: 80px !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  border-right: 1px solid #f0f0f0 !important;
+}
+
+.schedule-view-date-box {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.schedule-view-date-box-today .schedule-view-day-number {
+  background-color: #1a73e8 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.schedule-view-day-number {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  color: #3c4043 !important;
+  line-height: 1 !important;
+}
+
+.schedule-view-weekday {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #70757a !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Schedule view - Items column */
+.schedule-view-items-column {
+  flex: 1 !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+/* Schedule view - Event item */
+.schedule-view-event-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 6px 8px !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  transition: background-color 0.2s !important;
+  width: 100% !important;
+}
+
+.schedule-view-event-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.schedule-view-event-indicator {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #039be5 !important;
+  margin-top: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.schedule-view-event-content {
+  flex: 1 !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.schedule-view-event-time {
+  font-size: 13px !important;
+  color: #70757a !important;
+  min-width: 80px !important;
+}
+
+.schedule-view-event-title {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-weight: 400 !important;
+}
+
+/* Schedule view - Task item */
+.schedule-view-task-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 6px 8px !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  transition: background-color 0.2s !important;
+  width: 100% !important;
+}
+
+.schedule-view-task-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.schedule-view-task-indicator {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #1a73e8 !important;
+  margin-top: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.schedule-view-task-content {
+  flex: 1 !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.schedule-view-task-time {
+  font-size: 13px !important;
+  color: #70757a !important;
+  min-width: 80px !important;
+}
+
+.schedule-view-task-title {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-weight: 400 !important;
+}
+
+/* Schedule view - Holiday item */
+.schedule-view-holiday-item {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  padding: 6px 8px !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  transition: background-color 0.2s !important;
+  width: 100% !important;
+}
+
+.schedule-view-holiday-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.schedule-view-holiday-item > div:first-child {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+
+.schedule-view-holiday-duplicate {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin-top: 4px !important;
+}
+
+.schedule-view-holiday-indicator {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #0b8043 !important;
+  margin-top: 4px !important;
+  flex-shrink: 0 !important;
+}
+
+.schedule-view-holiday-content {
+  flex: 1 !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.schedule-view-holiday-time {
+  font-size: 13px !important;
+  color: #70757a !important;
+  min-width: 80px !important;
+}
+
+.schedule-view-holiday-title {
+  font-size: 14px !important;
+  color: #3c4043 !important;
+  font-weight: 400 !important;
+}
+
+/* ==========================================================================
      EVENT SUMMARY POPOVER COMPONENT (components/event-summary-popover.tsx)
      ========================================================================== */
 

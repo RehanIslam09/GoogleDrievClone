@@ -419,7 +419,7 @@ export default function GoogleNavbar() {
               </button>
               <button
                 onClick={() => {
-                  // Schedule view not implemented yet
+                  setView("schedule");
                   setIsDropdownOpen(false);
                 }}
                 className="navbar-dropdown-item"

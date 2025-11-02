@@ -16,6 +16,7 @@ import GoogleCalendarGrid from "./google-calendar-grid";
 import WeekView from "./week-view";
 import DayView from "./day-view";
 import YearView from "./year-view";
+import ScheduleView from "./schedule-view";
 import EventPopover from "./event-popover";
 import { EventSummaryPopover } from "./event-summary-popover";
 import TaskPopupCard from "./task-popup-card";
@@ -175,6 +176,7 @@ export default function MainView({
           {selectedView === "week" && <WeekView />}
           {selectedView === "day" && <DayView />}
           {selectedView === "year" && <YearView />}
+          {selectedView === "schedule" && <ScheduleView />}
         </div>
       </div>
 
