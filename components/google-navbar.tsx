@@ -409,7 +409,7 @@ export default function GoogleNavbar() {
               </button>
               <button
                 onClick={() => {
-                  // Year view not implemented yet
+                  setView("year");
                   setIsDropdownOpen(false);
                 }}
                 className="navbar-dropdown-item"

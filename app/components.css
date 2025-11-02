@@ -1705,6 +1705,141 @@
 }
 
 /* ==========================================================================
+     YEAR VIEW COMPONENT (components/year-view.tsx)
+     ========================================================================== */
+
+/* Year view - Main container */
+.year-view-container {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 32px !important;
+  padding: 24px 48px !important;
+  background-color: white !important;
+  overflow-y: auto !important;
+  height: calc(100vh - 64px) !important;
+}
+
+/* Year view - Individual month container */
+.year-view-month {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+/* Year view - Month name */
+.year-view-month-name {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  margin-bottom: 4px !important;
+  text-align: center !important;
+}
+
+/* Year view - Weekdays header */
+.year-view-weekdays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 2px !important;
+  margin-bottom: 4px !important;
+}
+
+/* Year view - Individual weekday */
+.year-view-weekday {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #70757a !important;
+  text-align: center !important;
+  padding: 4px 0 !important;
+}
+
+/* Year view - Days grid */
+.year-view-days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  gap: 2px !important;
+}
+
+/* Year view - Individual day */
+.year-view-day {
+  aspect-ratio: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  color: #3c4043 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.year-view-day:hover {
+  background-color: #f1f3f4 !important;
+}
+
+/* Year view - Day from other month */
+.year-view-day-other-month {
+  color: #dadce0 !important;
+}
+
+/* Year view - Today */
+.year-view-day-today {
+  background-color: #1a73e8 !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.year-view-day-today:hover {
+  background-color: #1765cc !important;
+}
+
+/* Year view - Selected day */
+.year-view-day-selected {
+  background-color: #e8f0fe !important;
+  color: #1967d2 !important;
+  font-weight: 500 !important;
+}
+
+.year-view-day-selected:hover {
+  background-color: #d2e3fc !important;
+}
+
+/* Year view - Empty day cell */
+.year-view-day-empty {
+  aspect-ratio: 1 !important;
+  width: 100% !important;
+}
+
+/* Responsive adjustments for year view */
+@media (max-width: 1400px) {
+  .year-view-container {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    padding: 20px 32px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .year-view-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    padding: 16px 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .year-view-container {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 16px !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* ==========================================================================
      EVENT SUMMARY POPOVER COMPONENT (components/event-summary-popover.tsx)
      ========================================================================== */
 
