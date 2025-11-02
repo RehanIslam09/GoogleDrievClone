@@ -429,7 +429,7 @@ export default function GoogleNavbar() {
               </button>
               <button
                 onClick={() => {
-                  // 4 days view not implemented yet
+                  setView("4days");
                   setIsDropdownOpen(false);
                 }}
                 className="navbar-dropdown-item"

@@ -1843,6 +1843,189 @@
 }
 
 /* ==========================================================================
+     FOUR DAYS VIEW COMPONENT (components/four-days-view.tsx)
+     ========================================================================== */
+
+/* Four days view - Main container */
+.four-days-view-container {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: white !important;
+  height: calc(100vh - 64px) !important;
+  overflow: hidden !important;
+}
+
+/* Four days view - Header */
+.four-days-view-header {
+  display: grid !important;
+  grid-template-columns: 100px repeat(4, 1fr) !important;
+  border-bottom: 1px solid #dadce0 !important;
+  background-color: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+}
+
+.four-days-view-time-header {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  padding: 8px 16px 8px 16px !important;
+  border-right: 1px solid #dadce0 !important;
+}
+
+.four-days-view-gmt-text {
+  font-size: 11px !important;
+  color: #70757a !important;
+  font-weight: 400 !important;
+}
+
+.four-days-view-day-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px 8px !important;
+  border-right: 1px solid #dadce0 !important;
+}
+
+.four-days-view-day-header:last-child {
+  border-right: none !important;
+}
+
+.four-days-view-day-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.four-days-view-weekday {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  color: #70757a !important;
+  letter-spacing: 0.8px !important;
+}
+
+.four-days-view-date-number {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  color: #3c4043 !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.four-days-view-date-number-today {
+  background-color: #1a73e8 !important;
+  color: white !important;
+  border-radius: 50% !important;
+}
+
+/* Four days view - Scroll container */
+.four-days-view-scroll-container {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Four days view - Grid */
+.four-days-view-grid {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Four days view - Row */
+.four-days-view-row {
+  display: grid !important;
+  grid-template-columns: 100px repeat(4, 1fr) !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  min-height: 60px !important;
+}
+
+.four-days-view-row:last-child {
+  border-bottom: 1px solid #dadce0 !important;
+}
+
+/* Four days view - Time cell */
+.four-days-view-time-cell {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  padding: 8px 16px 0 8px !important;
+  border-right: 1px solid #dadce0 !important;
+  background-color: white !important;
+}
+
+.four-days-view-time-label {
+  font-size: 11px !important;
+  color: #70757a !important;
+  font-weight: 400 !important;
+  transform: translateY(-8px) !important;
+}
+
+/* Four days view - Day cell */
+.four-days-view-day-cell {
+  border-right: 1px solid #f0f0f0 !important;
+  background-color: white !important;
+  position: relative !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+}
+
+.four-days-view-day-cell:last-child {
+  border-right: none !important;
+}
+
+.four-days-view-day-cell:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Responsive adjustments for four days view */
+@media (max-width: 1024px) {
+  .four-days-view-header {
+    grid-template-columns: 80px repeat(4, 1fr) !important;
+  }
+
+  .four-days-view-row {
+    grid-template-columns: 80px repeat(4, 1fr) !important;
+  }
+
+  .four-days-view-time-header {
+    padding: 8px 12px !important;
+  }
+
+  .four-days-view-gmt-text {
+    font-size: 10px !important;
+  }
+
+  .four-days-view-date-number {
+    font-size: 20px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .four-days-view-header {
+    grid-template-columns: 60px repeat(4, 1fr) !important;
+  }
+
+  .four-days-view-row {
+    grid-template-columns: 60px repeat(4, 1fr) !important;
+  }
+
+  .four-days-view-time-cell {
+    padding: 8px 8px 0 4px !important;
+  }
+
+  .four-days-view-time-label {
+    font-size: 10px !important;
+  }
+}
+
+/* ==========================================================================
      SCHEDULE VIEW COMPONENT (components/schedule-view.tsx)
      ========================================================================== */
 
