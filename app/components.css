@@ -1,0 +1,1448 @@
+/* ============================================================================
+   GOOGLE CALENDAR CLONE - COMPONENT STYLES
+
+   This file contains all extracted styles from the application components.
+   Each section is clearly labeled with the component name and element purpose.
+
+   To edit styles, find the relevant section and modify the CSS properties.
+   ============================================================================ */
+
+/* ==========================================================================
+   CREATE BUTTON COMPONENT (components/create-button.tsx)
+   ========================================================================== */
+
+/* Main create button wrapper */
+.create-button-wrapper {
+  @apply relative inline-block;
+}
+
+/* Create button - Main clickable button */
+.create-button {
+  @apply flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-[14px] font-medium text-[#3c4043] shadow-[0_1px_2px_0_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] transition-all duration-150 hover:shadow-[0_1px_3px_0_rgba(60,64,67,0.3),0_4px_8px_3px_rgba(60,64,67,0.15)] focus:outline-none;
+}
+
+/* Create button - Plus icon */
+.create-button-icon {
+  @apply h-5 w-5 text-[#3c4043];
+}
+
+/* Create button - Dropdown chevron arrow */
+.create-button-chevron {
+  @apply h-4 w-4 text-[#3c4043] transition-transform duration-200;
+}
+
+/* Create button - Chevron rotated state (when dropdown is open) */
+.create-button-chevron-open {
+  @apply rotate-180;
+}
+
+/* Create button - Chevron closed state */
+.create-button-chevron-closed {
+  @apply rotate-0;
+}
+
+/* Create button - Dropdown menu container */
+.create-button-dropdown {
+  @apply absolute left-0 top-full z-50 mt-2 w-60 rounded-lg border border-[#dadce0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
+}
+
+/* Create button - Dropdown menu item (Event/Task/Appointment) */
+.create-button-dropdown-item {
+  @apply block w-full px-5 py-2.5 text-left text-[14px] text-[#3c4043] transition-colors hover:bg-[#f1f3f4];
+}
+
+/* ==========================================================================
+     GOOGLE SIDEBAR COMPONENT (components/google-sidebar.tsx)
+     ========================================================================== */
+
+/* Sidebar - Main container */
+.google-sidebar {
+  @apply flex h-full w-[256px] flex-col border-r border-[#e8eaed] bg-[#f8f9fa];
+}
+
+/* Sidebar - Create button container */
+.sidebar-create-container {
+  @apply px-3 pb-5 pt-2;
+}
+
+/* Sidebar - Mini calendar container */
+.sidebar-mini-calendar-container {
+  @apply px-2 pb-3;
+}
+
+/* Sidebar - Mini calendar wrapper */
+.sidebar-mini-calendar {
+  @apply rounded-lg bg-white p-3 px-4;
+}
+
+/* Sidebar - Mini calendar header (Month/Year with arrows) */
+.sidebar-mini-calendar-header {
+  @apply mb-3 flex items-center justify-between;
+}
+
+/* Sidebar - Mini calendar navigation button (left/right arrows) */
+.sidebar-mini-calendar-nav-button {
+  @apply rounded-full p-2 transition-colors hover:bg-[#f1f3f4];
+}
+
+/* Sidebar - Mini calendar navigation icon */
+.sidebar-mini-calendar-nav-icon {
+  @apply h-5 w-5 text-[#5f6368];
+}
+
+/* Sidebar - Mini calendar month/year text */
+.sidebar-mini-calendar-month-text {
+  @apply text-[14px] font-bold text-[#3c4043];
+}
+
+/* Sidebar - Day abbreviations container */
+.sidebar-mini-calendar-days-header {
+  @apply mb-2 grid grid-cols-7 gap-1 text-center;
+}
+
+/* Sidebar - Individual day abbreviation */
+.sidebar-mini-calendar-day-abbr {
+  @apply text-[11px] font-medium uppercase text-[#70757a];
+}
+
+/* Sidebar - Calendar grid */
+.sidebar-mini-calendar-grid {
+  @apply grid grid-cols-7 gap-1;
+}
+
+/* Sidebar - Calendar cell button */
+.sidebar-mini-calendar-cell {
+  @apply flex h-9 w-full items-center justify-center text-[12px] font-semibold;
+}
+
+/* Sidebar - Today's date circle (blue background) */
+.sidebar-mini-calendar-today {
+  @apply flex h-9 w-9 items-center justify-center rounded-full bg-[#1a73e8];
+}
+
+/* Sidebar - Today's date text */
+.sidebar-mini-calendar-today-text {
+  @apply font-semibold text-white;
+}
+
+/* Sidebar - Regular calendar date */
+.sidebar-mini-calendar-date {
+  @apply flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[#f1f3f4];
+}
+
+/* Sidebar - Selected date (not today) */
+.sidebar-mini-calendar-selected {
+  @apply bg-[#e8f0fe];
+}
+
+/* Sidebar - Date text for current month */
+.sidebar-mini-calendar-current-month {
+  @apply text-[#3c4043];
+}
+
+/* Sidebar - Date text for previous/next month */
+.sidebar-mini-calendar-other-month {
+  @apply text-[#70757a] opacity-60;
+}
+
+/* Sidebar - Search for people container */
+.sidebar-search-container {
+  @apply px-3 pb-4 pt-1;
+}
+
+/* Sidebar - Search input wrapper */
+.sidebar-search-input-wrapper {
+  @apply flex h-12 items-center gap-3 rounded-lg bg-[#f1f3f4] px-4 py-2 transition-colors hover:bg-[#e8eaed];
+}
+
+/* Sidebar - Search icon */
+.sidebar-search-icon {
+  @apply h-5 w-5 flex-shrink-0 text-[#5f6368];
+}
+
+/* Sidebar - Search input field */
+.sidebar-search-input {
+  @apply flex-1 bg-transparent text-[14px] text-[#5f6368] placeholder-[#5f6368] outline-none;
+}
+
+/* Sidebar - Scrollable calendar lists container */
+.sidebar-calendars-container {
+  @apply flex-1 overflow-y-auto px-2 pb-4;
+}
+
+/* Sidebar - Calendar section (My Calendars, Other Calendars) */
+.sidebar-calendar-section {
+  @apply mb-3;
+}
+
+/* Sidebar - Calendar section toggle button */
+.sidebar-calendar-section-toggle {
+  @apply mb-1 flex w-full items-center gap-2 rounded px-2 py-2 text-[14px] font-medium text-[#3c4043] transition-colors hover:bg-[#e8eaed];
+}
+
+/* Sidebar - Section title text */
+.sidebar-section-title {
+  @apply font-bold;
+}
+
+/* Sidebar - Section plus icon */
+.sidebar-section-plus-icon {
+  @apply ml-auto h-4 w-4 text-[#5f6368];
+}
+
+/* Sidebar - Chevron icon in section toggle */
+.sidebar-calendar-section-icon {
+  @apply h-5 w-5 text-[#5f6368];
+}
+
+/* Sidebar - Calendar list items container */
+.sidebar-calendar-list {
+  @apply space-y-0.5 pl-1;
+}
+
+/* Sidebar - Individual calendar item */
+.sidebar-calendar-item {
+  @apply flex h-8 items-center gap-3 rounded px-3 transition-colors hover:bg-[#f1f3f4];
+}
+
+/* Sidebar - Calendar checkbox */
+.sidebar-calendar-checkbox {
+  @apply h-4 w-4 flex-shrink-0 cursor-pointer rounded border-[#dadce0] accent-[#1a73e8];
+}
+
+/* Sidebar - Calendar color indicator dot */
+.sidebar-calendar-color-dot {
+  @apply h-3 w-3 flex-shrink-0 rounded-full;
+}
+
+/* Sidebar - Calendar name text */
+.sidebar-calendar-name {
+  @apply flex-1 truncate text-[14px] text-[#3c4043];
+}
+
+/* Sidebar - Footer container */
+.sidebar-footer {
+  @apply mt-auto border-t border-[#e8eaed] px-4 py-3;
+}
+
+/* Sidebar - Footer text */
+.sidebar-footer-text {
+  @apply text-[11px] text-[#70757a];
+}
+
+/* ==========================================================================
+     GOOGLE NAVBAR COMPONENT (components/google-navbar.tsx)
+     ========================================================================== */
+
+/* Navbar - Main navigation container */
+.google-navbar {
+  @apply flex h-[64px] items-center justify-between border-b border-[#e8eaed] bg-white px-4;
+}
+
+/* Navbar - Left section container */
+.navbar-left-section {
+  @apply flex items-center gap-4;
+}
+
+/* Navbar - Hamburger menu button */
+.navbar-hamburger-button {
+  @apply rounded-full p-3 text-[#5F6368] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Hamburger menu icon */
+.navbar-hamburger-icon {
+  @apply h-5 w-5;
+}
+
+/* Navbar - Logo and text container */
+.navbar-logo-container {
+  @apply flex items-center gap-2;
+}
+
+/* Navbar - Logo icon wrapper */
+.navbar-logo-wrapper {
+  @apply flex h-10 w-10 items-center justify-center;
+}
+
+/* Navbar - Logo SVG */
+.navbar-logo-svg {
+  @apply h-10 w-10;
+}
+
+/* Navbar - Calendar text */
+.navbar-title-text {
+  @apply text-[22px] font-normal text-[#3C4043];
+}
+
+/* Navbar - Center section container */
+.navbar-center-section {
+  @apply flex items-center gap-3;
+}
+
+/* Navbar - Today button */
+.navbar-today-button {
+  @apply rounded border border-[#DADCE0] bg-white px-6 py-2 text-sm font-medium text-[#3C4043] hover:bg-[#F8F9FA] hover:shadow-sm;
+}
+
+/* Navbar - Navigation arrows container */
+.navbar-nav-arrows {
+  @apply flex items-center;
+}
+
+/* Navbar - Navigation arrow button (prev/next) */
+.navbar-nav-button {
+  @apply rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Navigation arrow icon */
+.navbar-nav-icon {
+  @apply h-5 w-5;
+}
+
+/* Navbar - Current month/year text */
+.navbar-month-year {
+  @apply min-w-[150px] text-[22px] font-normal text-[#3C4043];
+}
+
+/* Navbar - Right section container */
+.navbar-right-section {
+  @apply flex items-center gap-2;
+}
+
+/* Navbar - Icon button (Search, Help, Settings, etc.) */
+.navbar-icon-button {
+  @apply rounded-full p-2 text-[#5F6368] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Icon size */
+.navbar-icon {
+  @apply h-5 w-5;
+}
+
+/* Navbar - View selector dropdown wrapper (pill-shaped button group) */
+.navbar-view-selector-wrapper {
+  @apply relative flex items-center rounded-full border border-[#DADCE0] bg-white;
+}
+
+/* Navbar - Calendar icon button (left side of pill) */
+.navbar-view-calendar-button {
+  @apply flex h-10 w-10 items-center justify-center rounded-l-full bg-[#C2E7FF] text-[#1A73E8] hover:bg-[#A8D8F0];
+}
+
+/* Navbar - Calendar icon */
+.navbar-view-calendar-icon {
+  @apply h-5 w-5;
+}
+
+/* Navbar - Checkmark button (middle of pill) */
+.navbar-view-check-button {
+  @apply flex h-10 w-10 items-center justify-center border-l border-r border-[#DADCE0] text-[#5F6368] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Checkmark icon */
+.navbar-view-check-icon {
+  @apply h-5 w-5;
+}
+
+/* Navbar - View selector dropdown (select element - right side of pill) */
+.navbar-view-selector {
+  @apply h-10 cursor-pointer appearance-none rounded-r-full border-none bg-transparent px-4 pr-8 text-sm font-medium text-[#3C4043] hover:bg-[#F1F3F4] focus:outline-none;
+}
+
+/* Navbar - View selector when month is selected */
+.navbar-view-selector-active {
+  @apply bg-transparent;
+}
+
+/* Navbar - View selector default state */
+.navbar-view-selector-inactive {
+  @apply bg-transparent;
+}
+
+/* Navbar - Dropdown chevron icon */
+.navbar-view-selector-chevron {
+  @apply pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 rotate-90 text-[#5F6368];
+}
+
+/* Navbar - View dropdown menu (custom dropdown styling) */
+.navbar-view-dropdown-menu {
+  @apply absolute right-0 top-full z-50 mt-2 w-80 rounded-lg border border-[#DADCE0] bg-white py-2 shadow-[0_2px_6px_rgba(60,64,67,0.3),0_1px_2px_rgba(60,64,67,0.15)];
+}
+
+/* Navbar - Dropdown menu item */
+.navbar-dropdown-item {
+  @apply flex w-full cursor-pointer items-center justify-between px-6 py-3 text-left text-[14px] text-[#3C4043] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Dropdown item with keyboard shortcut */
+.navbar-dropdown-item-shortcut {
+  @apply ml-auto text-[12px] text-[#5F6368];
+}
+
+/* Navbar - Dropdown separator line */
+.navbar-dropdown-separator {
+  @apply my-2 border-t border-[#DADCE0];
+}
+
+/* Navbar - Dropdown checkbox item */
+.navbar-dropdown-checkbox-item {
+  @apply flex w-full cursor-pointer items-center gap-3 px-6 py-3 text-left text-[14px] text-[#3C4043] hover:bg-[#F1F3F4];
+}
+
+/* Navbar - Dropdown checkmark icon */
+.navbar-dropdown-checkmark {
+  @apply h-5 w-5 text-[#1A73E8];
+}
+
+/* Navbar - Profile avatar button */
+.navbar-profile-avatar {
+  @apply ml-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#1A73E8] text-sm font-medium text-white hover:opacity-90;
+}
+
+/* Navbar - Profile avatar icon */
+.navbar-profile-icon {
+  @apply h-4 w-4;
+}
+
+/* ==========================================================================
+     GOOGLE CALENDAR GRID COMPONENT (components/google-calendar-grid.tsx)
+     ========================================================================== */
+
+/* Calendar grid - Main container */
+.calendar-grid-container {
+  @apply flex h-full w-full flex-col bg-white;
+}
+
+/* Calendar grid - Weekday header row */
+.calendar-header-row {
+  @apply grid grid-cols-7 border-b border-[#e0e0e0] bg-white;
+}
+
+/* Calendar grid - Individual weekday header cell */
+.calendar-header-cell {
+  @apply flex items-center justify-center border-r border-[#e0e0e0] py-3 last:border-r-0;
+}
+
+/* Calendar grid - Weekday text (SUN, MON, etc.) */
+.calendar-header-text {
+  @apply text-[11px] font-medium uppercase tracking-[0.8px] text-[#70757a];
+}
+
+/* Calendar grid - 6-week grid container */
+.calendar-weeks-grid {
+  @apply grid flex-1 grid-cols-7 grid-rows-6;
+}
+
+/* Calendar grid - Empty cell (for padding) */
+.calendar-cell-empty {
+  @apply flex flex-col border-b border-r border-[#e0e0e0] bg-white last:border-r-0;
+}
+
+/* Calendar grid - Regular date cell */
+.calendar-cell {
+  @apply flex flex-col border-b border-r border-[#e0e0e0] bg-white p-2 transition-colors last:border-r-0 hover:bg-gray-100;
+}
+
+/* Calendar grid - Date number container */
+.calendar-cell-date-wrapper {
+  @apply mb-1 flex items-start justify-start;
+}
+
+/* Calendar grid - Today's date circle */
+.calendar-cell-today {
+  @apply flex h-7 w-7 items-center justify-center rounded-full bg-[#1a73e8];
+}
+
+/* Calendar grid - Today's date text */
+.calendar-cell-today-text {
+  @apply text-sm font-medium text-white;
+}
+
+/* Calendar grid - Regular date text (current month) */
+.calendar-cell-date-current {
+  @apply text-sm font-medium text-[#3c4043];
+}
+
+/* Calendar grid - Date text (previous/next month) */
+.calendar-cell-date-other {
+  @apply text-sm font-medium text-[#70757a];
+}
+
+/* Calendar grid - Events container */
+.calendar-cell-events {
+  @apply flex flex-1 flex-col gap-1 overflow-hidden;
+}
+
+/* Calendar grid - Holiday event button */
+.calendar-event-holiday {
+  @apply w-full truncate rounded-md bg-green-700 px-2 py-0.5 text-left text-xs text-white hover:bg-green-800;
+}
+
+/* Calendar grid - Regular event button */
+.calendar-event-button {
+  @apply w-full truncate rounded-md bg-[#1a73e8] px-2 py-0.5 text-left text-xs text-white hover:bg-[#1557b0];
+}
+
+/* Calendar grid - Task button */
+.calendar-event-task {
+  @apply w-full truncate rounded-md bg-[#1a73e8] px-2 py-0.5 text-left text-xs text-white hover:bg-[#1557b0];
+}
+
+/* Calendar grid - Completed task (with strikethrough) */
+.calendar-event-task-completed {
+  @apply line-through opacity-60;
+}
+
+/* Calendar grid - Overflow indicator ("+X more") */
+.calendar-overflow-indicator {
+  @apply text-left text-xs font-medium text-[#5f6368] hover:text-[#3c4043];
+}
+
+/* ==========================================================================
+     WEEK VIEW COMPONENT (components/week-view.tsx)
+     ========================================================================== */
+
+/* Week view - Main container */
+.week-view-container {
+  @apply flex h-full flex-col bg-white;
+}
+
+/* Week view - Header grid */
+.week-view-header {
+  @apply grid grid-cols-[64px_repeat(7,1fr)] border-b border-google-gray-200;
+}
+
+/* Week view - Timezone cell */
+.week-view-timezone-cell {
+  @apply flex items-center justify-center border-r border-google-gray-200 py-4;
+}
+
+/* Week view - Timezone text */
+.week-view-timezone-text {
+  @apply text-[10px] text-google-gray-500;
+}
+
+/* Week view - Day header cell */
+.week-view-day-header {
+  @apply flex flex-col items-center justify-center gap-1 border-r border-google-gray-200 py-2 last:border-r-0;
+}
+
+/* Week view - Day abbreviation (Mon, Tue, etc.) */
+.week-view-day-abbr {
+  @apply text-[11px] font-medium uppercase;
+}
+
+/* Week view - Day abbreviation (today - blue) */
+.week-view-day-abbr-today {
+  @apply text-google-blue-500;
+}
+
+/* Week view - Day abbreviation (regular - gray) */
+.week-view-day-abbr-regular {
+  @apply text-google-gray-600;
+}
+
+/* Week view - Date number circle */
+.week-view-date-circle {
+  @apply flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal transition-colors;
+}
+
+/* Week view - Date circle (today - blue background) */
+.week-view-date-circle-today {
+  @apply bg-google-blue-500 text-white;
+}
+
+/* Week view - Date circle (regular - gray text) */
+.week-view-date-circle-regular {
+  @apply text-google-gray-700;
+}
+
+/* Week view - Time grid container */
+.week-view-time-grid {
+  @apply grid grid-cols-[64px_repeat(7,1fr)];
+}
+
+/* Week view - Time column */
+.week-view-time-column {
+  @apply border-r border-google-gray-200;
+}
+
+/* Week view - Hour cell in time column */
+.week-view-hour-cell {
+  @apply relative h-12 border-b border-google-gray-100;
+}
+
+/* Week view - Hour text */
+.week-view-hour-text {
+  @apply absolute -top-2 right-2 text-[10px] text-google-gray-500;
+}
+
+/* Week view - Day column */
+.week-view-day-column {
+  @apply relative border-r border-google-gray-200 last:border-r-0;
+}
+
+/* Week view - Hour cell in day column */
+.week-view-day-hour-cell {
+  @apply relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50;
+}
+
+/* Week view - Events container in cell */
+.week-view-cell-events {
+  @apply space-y-0.5 p-1;
+}
+
+/* Week view - Current time indicator line */
+.week-view-current-time-line {
+  @apply absolute z-10 h-0.5 w-full bg-red-500;
+}
+
+/* Week view - Current time indicator dot */
+.week-view-current-time-dot {
+  @apply absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500;
+}
+
+/* ==========================================================================
+     DAY VIEW COMPONENT (components/day-view.tsx)
+     ========================================================================== */
+
+/* Day view - Main container */
+.day-view-container {
+  @apply flex h-full flex-col bg-white;
+}
+
+/* Day view - Header grid */
+.day-view-header {
+  @apply grid grid-cols-[64px_1fr] border-b border-google-gray-200;
+}
+
+/* Day view - Timezone cell */
+.day-view-timezone-cell {
+  @apply flex items-center justify-center border-r border-google-gray-200 py-4;
+}
+
+/* Day view - Timezone text */
+.day-view-timezone-text {
+  @apply text-[10px] text-google-gray-500;
+}
+
+/* Day view - Day header */
+.day-view-day-header {
+  @apply flex items-center justify-center gap-2 py-2;
+}
+
+/* Day view - Day name (Monday, Tuesday, etc.) */
+.day-view-day-name {
+  @apply text-[11px] font-medium uppercase;
+}
+
+/* Day view - Day name (today - blue) */
+.day-view-day-name-today {
+  @apply text-google-blue-500;
+}
+
+/* Day view - Day name (regular - gray) */
+.day-view-day-name-regular {
+  @apply text-google-gray-600;
+}
+
+/* Day view - Date circle */
+.day-view-date-circle {
+  @apply flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal transition-colors;
+}
+
+/* Day view - Date circle (today - blue) */
+.day-view-date-circle-today {
+  @apply bg-google-blue-500 text-white;
+}
+
+/* Day view - Date circle (regular - gray) */
+.day-view-date-circle-regular {
+  @apply text-google-gray-700;
+}
+
+/* Day view - Time grid */
+.day-view-time-grid {
+  @apply grid grid-cols-[64px_1fr];
+}
+
+/* Day view - Time column */
+.day-view-time-column {
+  @apply border-r border-google-gray-200;
+}
+
+/* Day view - Hour cell */
+.day-view-hour-cell {
+  @apply relative h-12 border-b border-google-gray-100;
+}
+
+/* Day view - Hour text */
+.day-view-hour-text {
+  @apply absolute -top-2 right-2 text-[10px] text-google-gray-500;
+}
+
+/* Day view - Day column */
+.day-view-day-column {
+  @apply relative;
+}
+
+/* Day view - Hour cell in day column */
+.day-view-day-hour-cell {
+  @apply relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50;
+}
+
+/* Day view - Events container */
+.day-view-cell-events {
+  @apply space-y-0.5 p-1;
+}
+
+/* Day view - Current time indicator line */
+.day-view-current-time-line {
+  @apply absolute z-10 h-0.5 w-full bg-red-500;
+}
+
+/* Day view - Current time indicator dot */
+.day-view-current-time-dot {
+  @apply absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500;
+}
+
+/* ==========================================================================
+     EVENT POPOVER COMPONENT (components/event-popover.tsx)
+     ========================================================================== */
+
+/* Event popover - Overlay background */
+.event-popover-overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50;
+}
+
+/* Event popover - Main popover container */
+.event-popover-container {
+  @apply w-full max-w-lg rounded-lg bg-white shadow-2xl;
+}
+
+/* Event popover - Header */
+.event-popover-header {
+  @apply flex items-center justify-between border-b border-google-gray-200 px-6 py-4;
+}
+
+/* Event popover - Header icon container (create event) */
+.event-popover-header-icon-wrapper {
+  @apply flex items-center gap-2;
+}
+
+/* Event popover - Header icon */
+.event-popover-header-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Event popover - Header text */
+.event-popover-header-text {
+  @apply text-sm font-medium text-google-gray-700;
+}
+
+/* Event popover - Close button */
+.event-popover-close-button {
+  @apply hover:bg-google-gray-100;
+}
+
+/* Event popover - Close icon */
+.event-popover-close-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Event popover - Form */
+.event-popover-form {
+  @apply space-y-4 p-6;
+}
+
+/* Event popover - Title input */
+.event-popover-title-input {
+  @apply rounded-none border-0 border-b border-google-gray-300 px-0 text-2xl font-normal text-google-gray-800 placeholder:text-google-gray-400 focus-visible:border-b-2 focus-visible:border-google-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0;
+}
+
+/* Event popover - Mode toggle container (Event/Task buttons) */
+.event-popover-mode-toggle {
+  @apply flex items-center gap-2 border-b border-google-gray-200 pb-4;
+}
+
+/* Event popover - Mode button (Event) */
+.event-popover-mode-button {
+  @apply rounded-full px-4 py-1.5 text-sm font-medium transition-colors;
+}
+
+/* Event popover - Mode button active state */
+.event-popover-mode-button-active {
+  @apply bg-blue-50 text-google-blue-600 hover:bg-blue-50;
+}
+
+/* Event popover - Mode button inactive state */
+.event-popover-mode-button-inactive {
+  @apply bg-transparent text-google-gray-700 hover:bg-google-gray-100;
+}
+
+/* Event popover - Field icon */
+.event-popover-field-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Event popover - Date text */
+.event-popover-date-text {
+  @apply text-sm text-google-gray-700;
+}
+
+/* Event popover - Regular input field */
+.event-popover-input {
+  @apply rounded-md border-0 bg-google-gray-50 text-sm text-google-gray-800 placeholder:text-google-gray-400 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-google-blue-500;
+}
+
+/* Event popover - Calendar info text */
+.event-popover-calendar-label {
+  @apply text-sm font-medium text-google-gray-700;
+}
+
+/* Event popover - Calendar color dot */
+.event-popover-calendar-dot {
+  @apply h-4 w-4 rounded-full bg-google-blue-500;
+}
+
+/* Event popover - Metadata text (Busy, visibility, etc.) */
+.event-popover-metadata {
+  @apply flex items-center gap-1 text-xs text-google-gray-500;
+}
+
+/* Event popover - Metadata separator dot */
+.event-popover-metadata-dot {
+  @apply h-1 w-1 rounded-full bg-google-gray-400;
+}
+
+/* Event popover - Submit button */
+.event-popover-submit-button {
+  @apply bg-google-blue-500 text-white hover:bg-google-blue-600;
+}
+
+/* Event popover - Error message */
+.event-popover-error {
+  @apply text-sm text-red-600;
+}
+
+/* Event popover - Success message */
+.event-popover-success {
+  @apply text-sm text-google-green-600;
+}
+
+/* ==========================================================================
+     EVENT SUMMARY POPOVER COMPONENT (components/event-summary-popover.tsx)
+     ========================================================================== */
+
+/* Event summary - Overlay background */
+.event-summary-overlay {
+  @apply fixed inset-0 z-40 flex items-center justify-center bg-black/50;
+}
+
+/* Event summary - Main container */
+.event-summary-container {
+  @apply w-full max-w-md rounded-lg bg-white shadow-2xl;
+}
+
+/* Event summary - Header */
+.event-summary-header {
+  @apply flex items-center justify-between border-b border-google-gray-200 px-6 py-4;
+}
+
+/* Event summary - Header title */
+.event-summary-header-title {
+  @apply text-xl font-medium text-google-gray-800;
+}
+
+/* Event summary - Close button */
+.event-summary-close-button {
+  @apply hover:bg-google-gray-100;
+}
+
+/* Event summary - Close icon */
+.event-summary-close-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Event summary - Content container */
+.event-summary-content {
+  @apply space-y-4 p-6;
+}
+
+/* Event summary - Title row */
+.event-summary-title-row {
+  @apply flex items-start gap-3;
+}
+
+/* Event summary - Color indicator */
+.event-summary-color-indicator {
+  @apply mt-1 h-3 w-3 rounded-sm bg-google-blue-500;
+}
+
+/* Event summary - Event title */
+.event-summary-title {
+  @apply text-2xl font-normal text-google-gray-800;
+}
+
+/* Event summary - Info row (date/time) */
+.event-summary-info-row {
+  @apply flex items-start gap-3;
+}
+
+/* Event summary - Info icon */
+.event-summary-info-icon {
+  @apply mt-0.5 h-5 w-5 text-google-gray-600;
+}
+
+/* Event summary - Date text */
+.event-summary-date-text {
+  @apply text-sm text-google-gray-700;
+}
+
+/* Event summary - Time text */
+.event-summary-time-text {
+  @apply text-sm text-google-gray-600;
+}
+
+/* Event summary - Description text */
+.event-summary-description {
+  @apply flex-1 text-sm text-google-gray-700;
+}
+
+/* ==========================================================================
+     MAIN VIEW COMPONENT (components/MainView.tsx)
+     ========================================================================== */
+
+/* Main view - Container */
+.main-view-container {
+  @apply flex h-screen flex-col overflow-hidden bg-white;
+}
+
+/* Main view - Content area */
+.main-view-content {
+  @apply relative flex flex-1 overflow-hidden;
+}
+
+/* Main view - Mobile overlay (when sidebar is open) */
+.main-view-mobile-overlay {
+  @apply absolute inset-0 z-20 bg-black/50 md:hidden;
+}
+
+/* Main view - Sidebar wrapper */
+.main-view-sidebar-wrapper {
+  @apply absolute z-30 h-full overflow-hidden transition-all duration-150 ease-in-out md:relative md:z-auto;
+}
+
+/* Main view - Sidebar open state */
+.main-view-sidebar-open {
+  @apply w-[280px];
+}
+
+/* Main view - Sidebar closed state */
+.main-view-sidebar-closed {
+  @apply w-0 -translate-x-full md:translate-x-0;
+}
+
+/* Main view - Calendar view container */
+.main-view-calendar {
+  @apply flex flex-1 flex-col overflow-hidden;
+}
+
+/* ==========================================================================
+     SIDEBAR CREATE COMPONENT (components/sidebar/create.tsx)
+     Floating Action Button Style
+     ========================================================================== */
+
+/* Sidebar create - Main wrapper */
+.sidebar-create-wrapper {
+  @apply relative flex flex-col items-center;
+}
+
+/* Sidebar create - Floating button wrapper (with animation) */
+.sidebar-create-float-wrapper {
+  @apply fixed bottom-6 right-6 z-50;
+}
+
+/* Sidebar create - Floating button */
+.sidebar-create-float-button {
+  @apply flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-400/40 hover:bg-blue-700;
+}
+
+/* Sidebar create - Plus icon */
+.sidebar-create-plus-icon {
+  @apply transition-transform duration-300;
+}
+
+/* Sidebar create - Plus icon rotated (when open) */
+.sidebar-create-plus-icon-rotated {
+  @apply rotate-45;
+}
+
+/* Sidebar create - Modal overlay */
+.sidebar-create-modal-overlay {
+  @apply fixed inset-0 z-40 flex items-center justify-center bg-black/30 backdrop-blur-sm;
+}
+
+/* Sidebar create - Modal content */
+.sidebar-create-modal-content {
+  @apply relative w-[90%] max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-neutral-900;
+}
+
+/* Sidebar create - Modal title */
+.sidebar-create-modal-title {
+  @apply mb-4 text-xl font-semibold text-gray-900 dark:text-white;
+}
+
+/* Sidebar create - Form */
+.sidebar-create-form {
+  @apply space-y-4;
+}
+
+/* Sidebar create - Input field */
+.sidebar-create-input {
+  @apply w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700;
+}
+
+/* Sidebar create - Textarea */
+.sidebar-create-textarea {
+  @apply w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700;
+}
+
+/* Sidebar create - Button container */
+.sidebar-create-button-container {
+  @apply flex justify-end gap-2 pt-2;
+}
+
+/* Sidebar create - Cancel button */
+.sidebar-create-cancel-button {
+  @apply text-gray-500 hover:text-gray-700 dark:text-gray-300;
+}
+
+/* Sidebar create - Submit button */
+.sidebar-create-submit-button {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+/* ===================================
+   GOOGLE CALENDAR GRID (MONTH VIEW)
+   =================================== */
+
+/* Main container for the calendar grid */
+.calendar-grid-container {
+  @apply flex h-full w-full flex-col bg-white;
+}
+
+/* Weekday header row container */
+.calendar-grid-weekday-header {
+  @apply grid grid-cols-7 border-b border-[#e8eaed] bg-white;
+}
+
+/* Individual weekday header cell */
+.calendar-grid-weekday-cell {
+  @apply flex items-center justify-center px-4 py-3 last:border-r-0;
+}
+
+/* Weekday text label */
+.calendar-grid-weekday-text {
+  @apply text-[11px] font-medium uppercase tracking-[0.8px] text-[#70757a];
+}
+
+/* 6-week calendar grid */
+.calendar-grid-weeks {
+  @apply grid flex-1 grid-cols-7 grid-rows-6;
+}
+
+/* Empty calendar cell */
+.calendar-grid-cell-empty {
+  @apply flex min-h-[140px] flex-col border-b border-r border-[#e8eaed] bg-white last:border-r-0;
+}
+
+/* Active calendar cell (with date) */
+.calendar-grid-cell {
+  @apply flex min-h-[140px] flex-col border-b border-r border-[#e8eaed] bg-white p-0 transition-colors last:border-r-0 hover:bg-[#f8f9fa];
+}
+
+/* Date number container */
+.calendar-grid-date-container {
+  @apply flex items-center justify-center px-4 py-2;
+}
+
+/* Today's date badge */
+.calendar-grid-date-today {
+  @apply flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#1a73e8];
+}
+
+/* Today's date number */
+.calendar-grid-date-today-text {
+  @apply text-[12px] font-medium text-white;
+}
+
+/* Regular date number (not today) */
+.calendar-grid-date-text {
+  @apply text-[12px] font-normal text-[#3c4043];
+}
+
+/* Date number for prev/next month */
+.calendar-grid-date-text-dim {
+  @apply text-[12px] font-normal text-[#70757a];
+}
+
+/* Events container in each cell */
+.calendar-grid-events-container {
+  @apply flex flex-1 flex-col gap-1 overflow-hidden px-4 pb-2;
+}
+
+/* Holiday event button in calendar cell */
+.calendar-grid-holiday-button {
+  @apply w-full truncate rounded px-1.5 py-0.5 text-left text-[11px] font-medium text-white hover:opacity-90;
+  background-color: #0b8043;
+}
+
+/* Event button in calendar cell */
+.calendar-grid-event-button {
+  @apply w-full truncate rounded px-1.5 py-0.5 text-left text-[11px] font-medium text-white hover:opacity-90;
+  background-color: #039be5;
+}
+
+/* Task button in calendar cell */
+.calendar-grid-task-button {
+  @apply w-full truncate rounded px-1.5 py-0.5 text-left text-[11px] font-medium text-white hover:opacity-90;
+  background-color: #039be5;
+}
+
+/* Completed task button */
+.calendar-grid-task-button-completed {
+  @apply line-through opacity-60;
+}
+
+/* Overflow indicator ("+X more") */
+.calendar-grid-overflow-button {
+  @apply text-left text-xs font-medium text-[#5f6368] hover:text-[#3c4043];
+}
+
+/* ===================================
+   WEEK VIEW COMPONENT
+   =================================== */
+
+/* Main container for week view */
+.week-view-container {
+  @apply flex h-full flex-col bg-white;
+}
+
+/* Week header container */
+.week-view-header {
+  @apply grid grid-cols-[64px_repeat(7,1fr)] border-b border-google-gray-200;
+}
+
+/* Timezone cell in week header */
+.week-view-timezone-cell {
+  @apply flex items-center justify-center border-r border-google-gray-200 py-4;
+}
+
+/* Timezone text */
+.week-view-timezone-text {
+  @apply text-[10px] text-google-gray-500;
+}
+
+/* Day header cell */
+.week-view-day-header {
+  @apply flex flex-col items-center justify-center gap-1 border-r border-google-gray-200 py-2 last:border-r-0;
+}
+
+/* Day abbreviation text (MON, TUE, etc.) */
+.week-view-day-abbr {
+  @apply text-[11px] font-medium uppercase text-google-gray-600;
+}
+
+/* Day abbreviation text (today) */
+.week-view-day-abbr-today {
+  @apply text-[11px] font-medium uppercase text-google-blue-500;
+}
+
+/* Day number badge */
+.week-view-day-number {
+  @apply flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal text-google-gray-700 transition-colors;
+}
+
+/* Day number badge (today) */
+.week-view-day-number-today {
+  @apply flex h-11 w-11 items-center justify-center rounded-full bg-google-blue-500 text-2xl font-normal text-white transition-colors;
+}
+
+/* Time grid container */
+.week-view-time-grid {
+  @apply grid grid-cols-[64px_repeat(7,1fr)];
+}
+
+/* Time column */
+.week-view-time-column {
+  @apply border-r border-google-gray-200;
+}
+
+/* Time slot cell */
+.week-view-time-slot {
+  @apply relative h-12 border-b border-google-gray-100;
+}
+
+/* Time label */
+.week-view-time-label {
+  @apply absolute -top-2 right-2 text-[10px] text-google-gray-500;
+}
+
+/* Day column */
+.week-view-day-column {
+  @apply relative border-r border-google-gray-200 last:border-r-0;
+}
+
+/* Hour cell in day column */
+.week-view-hour-cell {
+  @apply relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50;
+}
+
+/* Events container in hour cell */
+.week-view-events-container {
+  @apply space-y-0.5 p-1;
+}
+
+/* Current time indicator */
+.week-view-time-indicator {
+  @apply absolute z-10 h-0.5 w-full bg-red-500;
+}
+
+/* Current time indicator dot */
+.week-view-time-indicator-dot {
+  @apply absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500;
+}
+
+/* ===================================
+   DAY VIEW COMPONENT
+   =================================== */
+
+/* Main container for day view */
+.day-view-container {
+  @apply flex h-full flex-col bg-white;
+}
+
+/* Day header container */
+.day-view-header {
+  @apply grid grid-cols-[64px_1fr] border-b border-google-gray-200;
+}
+
+/* Timezone cell in day header */
+.day-view-timezone-cell {
+  @apply flex items-center justify-center border-r border-google-gray-200 py-4;
+}
+
+/* Timezone text */
+.day-view-timezone-text {
+  @apply text-[10px] text-google-gray-500;
+}
+
+/* Day header content (day name + number) */
+.day-view-day-header {
+  @apply flex items-center justify-center gap-2 py-2;
+}
+
+/* Day name text (MONDAY, TUESDAY, etc.) */
+.day-view-day-name {
+  @apply text-[11px] font-medium uppercase text-google-gray-600;
+}
+
+/* Day name text (today) */
+.day-view-day-name-today {
+  @apply text-[11px] font-medium uppercase text-google-blue-500;
+}
+
+/* Day number badge */
+.day-view-day-number {
+  @apply flex h-11 w-11 items-center justify-center rounded-full text-2xl font-normal text-google-gray-700 transition-colors;
+}
+
+/* Day number badge (today) */
+.day-view-day-number-today {
+  @apply flex h-11 w-11 items-center justify-center rounded-full bg-google-blue-500 text-2xl font-normal text-white transition-colors;
+}
+
+/* Time grid container */
+.day-view-time-grid {
+  @apply grid grid-cols-[64px_1fr];
+}
+
+/* Time column */
+.day-view-time-column {
+  @apply border-r border-google-gray-200;
+}
+
+/* Time slot cell */
+.day-view-time-slot {
+  @apply relative h-12 border-b border-google-gray-100;
+}
+
+/* Time label */
+.day-view-time-label {
+  @apply absolute -top-2 right-2 text-[10px] text-google-gray-500;
+}
+
+/* Day column */
+.day-view-day-column {
+  @apply relative;
+}
+
+/* Hour cell in day column */
+.day-view-hour-cell {
+  @apply relative h-12 cursor-pointer border-b border-google-gray-100 transition-colors hover:bg-google-gray-50;
+}
+
+/* Events container in hour cell */
+.day-view-events-container {
+  @apply space-y-0.5 p-1;
+}
+
+/* Current time indicator */
+.day-view-time-indicator {
+  @apply absolute z-10 h-0.5 w-full bg-red-500;
+}
+
+/* Current time indicator dot */
+.day-view-time-indicator-dot {
+  @apply absolute -left-1.5 -top-1.5 h-3 w-3 rounded-full bg-red-500;
+}
+
+/* ===================================
+   EVENT POPOVER (CREATE EVENT/TASK)
+   =================================== */
+
+/* Modal overlay */
+.event-popover-overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-black/50;
+}
+
+/* Popover container */
+.event-popover-container {
+  @apply w-full max-w-lg rounded-lg bg-white shadow-2xl;
+}
+
+/* Popover header */
+.event-popover-header {
+  @apply flex items-center justify-between border-b border-google-gray-200 px-6 py-4;
+}
+
+/* Header title container */
+.event-popover-header-title {
+  @apply flex items-center gap-2;
+}
+
+/* Header icon */
+.event-popover-header-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Header text */
+.event-popover-header-text {
+  @apply text-sm font-medium text-google-gray-700;
+}
+
+/* Close button */
+.event-popover-close-button {
+  @apply hover:bg-google-gray-100;
+}
+
+/* Form container */
+.event-popover-form {
+  @apply space-y-4 p-6;
+}
+
+/* Title input */
+.event-popover-title-input {
+  @apply rounded-none border-0 border-b border-google-gray-300 px-0 text-2xl font-normal text-google-gray-800 placeholder:text-google-gray-400 focus-visible:border-b-2 focus-visible:border-google-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0;
+}
+
+/* Mode selector container */
+.event-popover-mode-selector {
+  @apply flex items-center gap-2 border-b border-google-gray-200 pb-4;
+}
+
+/* Mode button (inactive) */
+.event-popover-mode-button {
+  @apply rounded-full bg-transparent px-4 py-1.5 text-sm font-medium text-google-gray-700 transition-colors hover:bg-google-gray-100;
+}
+
+/* Mode button (active) */
+.event-popover-mode-button-active {
+  @apply bg-google-blue-100 text-google-blue-700 hover:bg-google-blue-100 rounded-full px-4 py-1.5 text-sm font-medium transition-colors;
+}
+
+/* Field row container */
+.event-popover-field-row {
+  @apply flex items-center gap-3;
+}
+
+/* Field icon */
+.event-popover-field-icon {
+  @apply h-5 w-5 text-google-gray-600;
+}
+
+/* Date/time info container */
+.event-popover-datetime-container {
+  @apply flex flex-col gap-1;
+}
+
+/* Date text */
+.event-popover-date-text {
+  @apply text-sm text-google-gray-700;
+}
+
+/* Input field */
+.event-popover-input {
+  @apply rounded-md border-0 bg-google-gray-50 text-sm text-google-gray-800 placeholder:text-google-gray-400 focus-visible:bg-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-google-blue-500;
+}
+
+/* Calendar info container */
+.event-popover-calendar-info {
+  @apply flex flex-col gap-1;
+}
+
+/* Calendar user row */
+.event-popover-calendar-user {
+  @apply flex items-center gap-2;
+}
+
+/* Calendar user name */
+.event-popover-calendar-user-name {
+  @apply text-sm font-medium text-google-gray-700;
+}
+
+/* Calendar color indicator */
+.event-popover-calendar-color {
+  @apply h-4 w-4 rounded-full bg-google-blue-500;
+}
+
+/* Calendar metadata row */
+.event-popover-calendar-meta {
+  @apply flex items-center gap-1 text-xs text-google-gray-500;
+}
+
+/* Calendar metadata dot separator */
+.event-popover-meta-dot {
+  @apply h-1 w-1 rounded-full bg-google-gray-400;
+}
+
+/* Action buttons container */
+.event-popover-actions {
+  @apply flex justify-end gap-2 pt-2;
+}
+
+/* Save button */
+.event-popover-save-button {
+  @apply bg-google-blue-500 text-white hover:bg-google-blue-600;
+}
+
+/* Error message */
+.event-popover-error {
+  @apply text-sm text-red-600;
+}
+
+/* Success message */
+.event-popover-success {
+  @apply text-sm text-google-green-600;
+}
