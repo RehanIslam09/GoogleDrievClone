@@ -19,7 +19,8 @@
       "Bash(timeout 10 bash -c \"until curl -s http://localhost:3000 > nul 2>&1; do sleep 1; done; echo ''Server is up''\")",
       "Bash(timeout 10 bash:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(del nul 2)"
     ],
     "deny": [],
     "ask": []
