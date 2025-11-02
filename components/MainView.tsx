@@ -9,6 +9,7 @@ import {
   useHolidayStore,
   useViewStore,
   useToggleSideBarStore,
+  useTasksViewStore,
 } from "@/lib/store";
 import GoogleNavbar from "./google-navbar";
 import GoogleSidebar from "./google-sidebar";
@@ -18,6 +19,7 @@ import DayView from "./day-view";
 import YearView from "./year-view";
 import ScheduleView from "./schedule-view";
 import FourDaysView from "./four-days-view";
+import TasksView from "./tasks-view";
 import EventPopover from "./event-popover";
 import { EventSummaryPopover } from "./event-summary-popover";
 import TaskPopupCard from "./task-popup-card";
@@ -41,6 +43,7 @@ export default function MainView({
 }) {
   const { selectedView } = useViewStore();
   const { isSideBarOpen, setSideBarOpen } = useToggleSideBarStore();
+  const { isTasksViewOpen } = useTasksViewStore();
 
   // Handle responsive sidebar on mobile
   useEffect(() => {
@@ -152,35 +155,39 @@ export default function MainView({
       <GoogleNavbar />
 
       {/* Main Content Area */}
-      <div className="main-view-content">
-        {/* Mobile Overlay */}
-        {isSideBarOpen && (
-          <div
-            className="main-view-mobile-overlay"
-            onClick={setSideBarOpen}
-          />
-        )}
-
-        {/* Sidebar - Collapsible */}
-        <div
-          className={cn(
-            "main-view-sidebar-wrapper",
-            isSideBarOpen ? "main-view-sidebar-open" : "main-view-sidebar-closed"
+      {isTasksViewOpen ? (
+        <TasksView />
+      ) : (
+        <div className="main-view-content">
+          {/* Mobile Overlay */}
+          {isSideBarOpen && (
+            <div
+              className="main-view-mobile-overlay"
+              onClick={setSideBarOpen}
+            />
           )}
-        >
-          <GoogleSidebar />
-        </div>
 
-        {/* Calendar View */}
-        <div className="main-view-calendar">
-          {selectedView === "month" && <GoogleCalendarGrid />}
-          {selectedView === "week" && <WeekView />}
-          {selectedView === "day" && <DayView />}
-          {selectedView === "year" && <YearView />}
-          {selectedView === "schedule" && <ScheduleView />}
-          {selectedView === "4days" && <FourDaysView />}
+          {/* Sidebar - Collapsible */}
+          <div
+            className={cn(
+              "main-view-sidebar-wrapper",
+              isSideBarOpen ? "main-view-sidebar-open" : "main-view-sidebar-closed"
+            )}
+          >
+            <GoogleSidebar />
+          </div>
+
+          {/* Calendar View */}
+          <div className="main-view-calendar">
+            {selectedView === "month" && <GoogleCalendarGrid />}
+            {selectedView === "week" && <WeekView />}
+            {selectedView === "day" && <DayView />}
+            {selectedView === "year" && <YearView />}
+            {selectedView === "schedule" && <ScheduleView />}
+            {selectedView === "4days" && <FourDaysView />}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Modals/Popups */}
       {isPopoverOpen && (

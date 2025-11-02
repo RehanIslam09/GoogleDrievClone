@@ -78,6 +78,11 @@ interface ToggleSideBarType {
   setSideBarOpen: () => void;
 }
 
+interface TasksViewStoreType {
+  isTasksViewOpen: boolean;
+  setTasksViewOpen: (value: boolean) => void;
+}
+
 export const useViewStore = create<ViewStoreType>()(
   devtools(
     persist(
@@ -158,4 +163,9 @@ export const useHolidayStore = create<HolidayStore>((set) => ({
     set({ isHolidayCardOpen: true, selectedHoliday: holiday }),
   closeHolidayCard: () =>
     set({ isHolidayCardOpen: false, selectedHoliday: null }),
+}));
+
+export const useTasksViewStore = create<TasksViewStoreType>()((set) => ({
+  isTasksViewOpen: false,
+  setTasksViewOpen: (value: boolean) => set({ isTasksViewOpen: value }),
 }));

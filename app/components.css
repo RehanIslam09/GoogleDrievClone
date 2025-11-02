@@ -401,6 +401,11 @@
   background-color: #f1f3f4 !important;
 }
 
+.navbar-view-check-button-active {
+  background-color: #e8f0fe !important;
+  color: #1a73e8 !important;
+}
+
 /* Navbar - Checkmark icon */
 .navbar-view-check-icon {
   width: 18px !important;
@@ -2890,4 +2895,251 @@
 /* Success message */
 .event-popover-success {
   @apply text-sm text-google-green-600;
+}
+
+/* ==========================================================================
+     TASKS VIEW COMPONENT (components/tasks-view.tsx)
+     ========================================================================== */
+
+/* Tasks view - Main container */
+.tasks-view-container {
+  display: flex !important;
+  height: calc(100vh - 64px) !important;
+  background-color: white !important;
+  overflow: hidden !important;
+}
+
+/* Tasks view - Sidebar */
+.tasks-view-sidebar {
+  width: 280px !important;
+  background-color: white !important;
+  border-right: 1px solid #dadce0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 16px 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Tasks view - Create button */
+.tasks-view-create-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 16px 24px 16px !important;
+  padding: 10px 16px !important;
+  background-color: white !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 24px !important;
+  color: #3c4043 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.tasks-view-create-button:hover {
+  background-color: #f8f9fa !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tasks-view-create-icon {
+  width: 20px !important;
+  height: 20px !important;
+  color: #3c4043 !important;
+}
+
+/* Tasks view - Navigation */
+.tasks-view-nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  padding: 0 8px !important;
+}
+
+.tasks-view-nav-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #3c4043 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.tasks-view-nav-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.tasks-view-nav-item-active {
+  background-color: #e8f0fe !important;
+  color: #1a73e8 !important;
+}
+
+.tasks-view-nav-icon {
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Tasks view - Lists section */
+.tasks-view-lists-section {
+  margin-top: 24px !important;
+  padding: 0 8px !important;
+}
+
+.tasks-view-lists-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+  cursor: pointer !important;
+  border-radius: 8px !important;
+  transition: background-color 0.2s !important;
+}
+
+.tasks-view-lists-header:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.tasks-view-lists-title-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.tasks-view-chevron-icon {
+  width: 16px !important;
+  height: 16px !important;
+  color: #5f6368 !important;
+  transition: transform 0.2s !important;
+}
+
+.tasks-view-lists-title {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: #5f6368 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.tasks-view-add-list-icon {
+  width: 16px !important;
+  height: 16px !important;
+  color: #5f6368 !important;
+}
+
+.tasks-view-lists-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  margin-top: 4px !important;
+}
+
+.tasks-view-list-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px 8px 36px !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #3c4043 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.tasks-view-list-item:hover {
+  background-color: #f1f3f4 !important;
+}
+
+.tasks-view-list-item:hover .tasks-view-list-more {
+  opacity: 1 !important;
+}
+
+.tasks-view-list-more {
+  width: 16px !important;
+  height: 16px !important;
+  color: #5f6368 !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s !important;
+}
+
+/* Tasks view - Main content area */
+.tasks-view-main {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: white !important;
+  overflow-y: auto !important;
+}
+
+.tasks-view-header {
+  padding: 24px 32px !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.tasks-view-title {
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  color: #3c4043 !important;
+}
+
+/* Tasks view - Add task button */
+.tasks-view-add-task-button {
+  display: flex !important;
+  align-items: center !important;
+  padding: 16px 32px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #5f6368 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  width: 100% !important;
+  transition: background-color 0.2s !important;
+}
+
+.tasks-view-add-task-button:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Tasks view - Empty state */
+.tasks-view-empty {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 48px !important;
+}
+
+.tasks-view-empty-illustration {
+  text-align: center !important;
+}
+
+.tasks-view-empty-icon {
+  width: 120px !important;
+  height: 120px !important;
+  margin: 0 auto 24px !important;
+  color: #dadce0 !important;
+}
+
+.tasks-view-empty-text {
+  font-size: 16px !important;
+  color: #5f6368 !important;
+  margin-bottom: 8px !important;
+}
+
+.tasks-view-empty-subtext {
+  font-size: 14px !important;
+  color: #80868b !important;
 }

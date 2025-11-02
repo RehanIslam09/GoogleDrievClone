@@ -24,7 +24,8 @@
       "Bash(if exist \"public\\img\\google-calendar.png\" echo File exists)",
       "Bash(Get-Content \"c:\\Users\\rehan\\SST_Hackathon\\SST_Hackathon\\google-calendar-clone-main\\app\\globals.css\")",
       "Bash(Select-String -Pattern \"navbar-search\" -Context 5)",
-      "Bash(Select-String -Pattern \"navbar-center-section\" -Context 5)"
+      "Bash(Select-String -Pattern \"navbar-center-section\" -Context 5)",
+      "Bash(Select-Object -Last 30)"
     ],
     "deny": [],
     "ask": []

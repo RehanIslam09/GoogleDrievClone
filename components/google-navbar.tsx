@@ -18,7 +18,7 @@ import {
   Printer,
   Download,
 } from "lucide-react";
-import { useDateStore, useViewStore, useToggleSideBarStore } from "@/lib/store";
+import { useDateStore, useViewStore, useToggleSideBarStore, useTasksViewStore } from "@/lib/store";
 import dayjs from "dayjs";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +26,7 @@ export default function GoogleNavbar() {
   const { userSelectedDate, setDate, selectedMonthIndex, setMonth } = useDateStore();
   const { selectedView, setView } = useViewStore();
   const { isSideBarOpen, setSideBarOpen } = useToggleSideBarStore();
+  const { isTasksViewOpen, setTasksViewOpen } = useTasksViewStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -360,7 +361,14 @@ export default function GoogleNavbar() {
           </button>
 
           {/* Checkmark Button (Middle) */}
-          <button className="navbar-view-check-button" aria-label="Tasks">
+          <button
+            onClick={() => setTasksViewOpen(!isTasksViewOpen)}
+            className={cn(
+              "navbar-view-check-button",
+              isTasksViewOpen && "navbar-view-check-button-active"
+            )}
+            aria-label="Tasks"
+          >
             <Check className="navbar-view-check-icon" />
           </button>
 
