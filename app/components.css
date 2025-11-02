@@ -1712,26 +1712,27 @@
 .year-view-container {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 32px !important;
-  padding: 24px 48px !important;
+  gap: 16px 24px !important;
+  padding: 16px 32px !important;
   background-color: white !important;
   overflow-y: auto !important;
   height: calc(100vh - 64px) !important;
+  align-content: start !important;
 }
 
 /* Year view - Individual month container */
 .year-view-month {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 4px !important;
 }
 
 /* Year view - Month name */
 .year-view-month-name {
-  font-size: 16px !important;
+  font-size: 13px !important;
   font-weight: 500 !important;
   color: #3c4043 !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 2px !important;
   text-align: center !important;
 }
 
@@ -1739,24 +1740,24 @@
 .year-view-weekdays {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
-  gap: 2px !important;
-  margin-bottom: 4px !important;
+  gap: 1px !important;
+  margin-bottom: 2px !important;
 }
 
 /* Year view - Individual weekday */
 .year-view-weekday {
-  font-size: 11px !important;
+  font-size: 10px !important;
   font-weight: 500 !important;
   color: #70757a !important;
   text-align: center !important;
-  padding: 4px 0 !important;
+  padding: 2px 0 !important;
 }
 
 /* Year view - Days grid */
 .year-view-days {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
-  gap: 2px !important;
+  gap: 1px !important;
 }
 
 /* Year view - Individual day */
@@ -1765,7 +1766,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
   color: #3c4043 !important;
   background: transparent !important;
   border: none !important;
@@ -1775,6 +1776,8 @@
   padding: 0 !important;
   width: 100% !important;
   height: auto !important;
+  min-width: 24px !important;
+  max-width: 32px !important;
 }
 
 .year-view-day:hover {
