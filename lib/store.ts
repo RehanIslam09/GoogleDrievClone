@@ -169,3 +169,21 @@ export const useTasksViewStore = create<TasksViewStoreType>()((set) => ({
   isTasksViewOpen: false,
   setTasksViewOpen: (value: boolean) => set({ isTasksViewOpen: value }),
 }));
+
+interface TimeInsightsPanelStore {
+  isTimeInsightsPanelOpen: boolean;
+  openTimeInsightsPanel: () => void;
+  closeTimeInsightsPanel: () => void;
+}
+
+export const useTimeInsightsPanelStore = create<TimeInsightsPanelStore>()((set) => ({
+  isTimeInsightsPanelOpen: false,
+  openTimeInsightsPanel: () => {
+    console.log('openTimeInsightsPanel called');
+    set({ isTimeInsightsPanelOpen: true });
+  },
+  closeTimeInsightsPanel: () => {
+    console.log('closeTimeInsightsPanel called');
+    set({ isTimeInsightsPanelOpen: false });
+  },
+}));

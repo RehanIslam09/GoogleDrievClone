@@ -10,6 +10,7 @@ import {
   useViewStore,
   useToggleSideBarStore,
   useTasksViewStore,
+  useTimeInsightsPanelStore,
 } from "@/lib/store";
 import GoogleNavbar from "./google-navbar";
 import GoogleSidebar from "./google-sidebar";
@@ -25,6 +26,7 @@ import { EventSummaryPopover } from "./event-summary-popover";
 import TaskPopupCard from "./task-popup-card";
 import HolidayEventCard from "./holiday-event-card";
 import GoogleSidePanel from "./google-side-panel";
+import TimeInsightsPanel from "./time-insights-panel";
 import { useEffect, useTransition } from "react";
 import dayjs from "dayjs";
 import {
@@ -45,6 +47,7 @@ export default function MainView({
   const { selectedView } = useViewStore();
   const { isSideBarOpen, setSideBarOpen } = useToggleSideBarStore();
   const { isTasksViewOpen } = useTasksViewStore();
+  const { isTimeInsightsPanelOpen, closeTimeInsightsPanel } = useTimeInsightsPanelStore();
 
   // Handle responsive sidebar on mobile
   useEffect(() => {
@@ -232,6 +235,12 @@ export default function MainView({
 
       {/* Google Side Panel */}
       <GoogleSidePanel />
+
+      {/* Time Insights Panel */}
+      <TimeInsightsPanel
+        isOpen={isTimeInsightsPanelOpen}
+        onClose={closeTimeInsightsPanel}
+      />
     </div>
   );
 }
