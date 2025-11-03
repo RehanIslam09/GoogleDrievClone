@@ -113,6 +113,8 @@ yarn dev
 # or
 pnpm dev
 Open http://localhost:3000 in your browser.
+
+```
 📁 Project Structure
 calendar-clone/
 ├── src/
@@ -137,3 +139,4 @@ calendar-clone/
 ├── drizzle/                  # Database migrations
 ├── public/                   # Static assets
 └── package.json
+```
